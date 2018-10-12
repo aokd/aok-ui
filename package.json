@@ -1,7 +1,7 @@
 {
   "name": "AokUI",
   "version": "0.0.1",
-  "description": "react components groups.",
+  "description": "react component groups.",
   "main": "index.js",
   "author": "Xuanyu Shen <chr1st0pher5henxy@gmail.com>",
   "license": "MIT"
