@@ -4,9 +4,9 @@ const glob = require('glob');
 module.exports = {
   title: 'React Style Guide Example',
   components: function () {
-    return glob.sync(path.resolve(__dirname, 'components/**/*.tsx'))
+    return glob.sync(path.resolve(__dirname, './components/**/*.tsx'))
       .filter(function (module) {
-        return /\/[A-Z]\w*\.tsx$/.test(module);
+        return /index.tsx$/.test(module);
       });
   },
   resolver: require('react-docgen').resolver.findAllComponentDefinitions,
@@ -15,5 +15,10 @@ module.exports = {
       skipPropsWithoutDoc: true
     }
   }).parse,
-  serverPort: 10113,
+  getExampleFilename(componentPath) {
+    console.info(componentPath)
+    const demoStr = 'demo'
+    let componentPath = componentPath.split('/')
+    return componentPath.replace(/\[A-Z].tsx?$/, '.md')
+  },
 };
