@@ -4,5 +4,10 @@
   "description": "react component groups.",
   "main": "index.js",
   "author": "Xuanyu Shen <chr1st0pher5henxy@gmail.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {},
+  "devDependencies": {
+    "@types/react": "^16.7.20",
+    "react": "^16.7.0"
+  }
 }
