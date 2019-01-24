@@ -1,16 +1,8 @@
-# Compiled source #
-###################
-dist
-
-# Dependencies #
-################
+# dependencies
 node_modules
 
-# Logs #
-########
-*.log
+# production
+dist
 
-# Os generated files #
-#####################
-.idea/
-.DS_Store
+#misc
+*.log

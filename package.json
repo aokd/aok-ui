@@ -1,25 +1,24 @@
 {
-  "name": "aok-ui",
+  "name": "aokui",
   "version": "0.0.1",
-  "description": "react component groups.",
   "main": "index.js",
-  "author": "Xuanyu Shen <chr1st0pher5henxy@gmail.com>",
+  "repository": "git@chr15t0pher.github.com:Chr15t0pher/AokUI.git",
+  "author": "Chr15t0pher <chr1st0pher5henxy@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "styleguidist": "styleguidist",
-    "start": "tsc && styleguidist server --config styleguide.config.js"
+    "start": "bisheng start --config ./site/bisheng.config.js",
+    "build": "bisheng build --config ./site/bisheng.config.js"
   },
-  "dependencies": {},
   "devDependencies": {
-    "@types/react": "^16.7.20",
-    "@types/webpack": "^4.4.24",
+    "@types/react": "^16.7.21",
+    "@types/react-dom": "^16.0.11",
+    "bisheng": "^1.0.1",
+    "bisheng-plugin-description": "^0.1.4",
+    "bisheng-theme-one": "^0.2.35",
     "react": "^16.7.0",
-    "react-docgen-typescript": "^1.12.3",
+    "react-document-title": "^2.0.1",
     "react-dom": "^16.7.0",
-    "react-styleguidist": "^8.0.6",
-    "ts-loader": "^5.3.3",
-    "typescript": "^3.2.4",
-    "webpack": "^4.29.0",
-    "webpack-cli": "^3.2.1"
+    "react-router-dom": "^4.3.1",
+    "webpack": "^4.29.0"
   }
 }
