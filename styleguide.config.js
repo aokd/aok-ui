@@ -1,24 +1,19 @@
-const path = require('path');
-const glob = require('glob');
+const path = require("path");
+const glob = require("glob");
 
 module.exports = {
-  title: 'React Style Guide Example',
+  title: "AokUI",
   components: function () {
-    return glob.sync(path.resolve(__dirname, './components/**/*.tsx'))
+    return glob
+      .sync(path.resolve(__dirname, "./components/**/*.tsx"))
       .filter(function (module) {
-        return /index.tsx$/.test(module);
+        return /\/[A-Z]\w*\.tsx$/.test(module);
       });
   },
-  resolver: require('react-docgen').resolver.findAllComponentDefinitions,
-  propsParser: require('react-docgen-typescript').withDefaultConfig({
+  resolver: require("react-docgen").resolver.findAllComponentDefinitions,
+  propsParser: require("react-docgen-typescript").withDefaultConfig({
     propFilter: {
       skipPropsWithoutDoc: true
     }
   }).parse,
-  getExampleFilename(componentPath) {
-    console.info(componentPath)
-    const demoStr = 'demo'
-    let componentPath = componentPath.split('/')
-    return componentPath.replace(/\[A-Z].tsx?$/, '.md')
-  },
 };

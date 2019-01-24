@@ -8,3 +8,5 @@ export class Button extends React.Component<IAppProps, any> {
     return <div>按钮</div>;
   }
 }
+
+export default Button;
