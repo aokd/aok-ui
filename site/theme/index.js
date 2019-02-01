@@ -1,25 +1,24 @@
 const path = require('path');
 
 module.exports = {
-  lazyLoad: true,
+  lazyLoad: false,
   pick: {
-    posts(markdownData) {
+    components(markdownData) {
+      const { filename } = markdownData.meta;
+      if (!/^components/.test(filename) || /[/\\]demo$/.test(path.dirname(filename))) {
+        return null;
+      }
       return {
         meta: markdownData.meta,
-        description: markdownData.description,
       };
     },
   },
-  plugins: ['bisheng-plugin-description'],
+  plugins: [
+    'bisheng-plugin-description',
+    'bisheng-plugin-react?lang=__react'
+  ],
   routes: [{
     path: '/',
-    component: './template/Archive',
-  }, {
-    path: '/posts/:post',
-    dataPath: '/:post',
-    component: './template/Post',
-  }, {
-    path: '/tags',
-    component: './template/TagCloud',
+    component: './template/Archive.tsx',
   }],
 };

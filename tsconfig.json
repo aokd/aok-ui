@@ -1,0 +1,40 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "allowJs": false,
+    "allowSyntheticDefaultImports": true,
+    "baseUrl": "/",
+    "charset": "utf-8",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "importHelpers": true,
+    "jsx": "react",
+    "lib": ["dom", "es5", "es6", "es7", "scripthost"],
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "newLine": "LF",
+    "noEmitHelpers": false,
+    "noStrictGenericChecks": true,
+    "noUnusedLocals": true,
+    "removeComments": true,
+    "skipLibCheck": true,
+    "strictNullChecks": true,
+    "suppressExcessPropertyErrors": true,
+    "suppressImplicitAnyIndexErrors": true,
+    "target": "es5",
+    "paths": {
+      "@/*": [
+        "./components/*"
+      ],
+      "aokui/*": [
+        "./components/*"
+      ],
+    }
+  },
+  "include": [ "components" ],
+  "exclude": [
+    "node_modules",
+    "dist",
+    "site",
+  ]
+}

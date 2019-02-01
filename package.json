@@ -10,15 +10,19 @@
     "build": "bisheng build --config ./site/bisheng.config.js"
   },
   "devDependencies": {
-    "@types/react": "^16.7.21",
+    "@types/node": "^10.12.20",
+    "@types/react": "^16.7.22",
     "@types/react-dom": "^16.0.11",
-    "bisheng": "^1.0.1",
+    "bisheng": "^1.1.0",
     "bisheng-plugin-description": "^0.1.4",
-    "bisheng-theme-one": "^0.2.35",
+    "bisheng-plugin-react": "^1.0.0",
+    "node-nightly": "^1.7.3",
     "react": "^16.7.0",
-    "react-document-title": "^2.0.1",
     "react-dom": "^16.7.0",
     "react-router-dom": "^4.3.1",
+    "ts-loader": "^5.3.3",
+    "ts-node": "^8.0.2",
+    "typescript": "^3.2.4",
     "webpack": "^4.29.0"
   }
 }

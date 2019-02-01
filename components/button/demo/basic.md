@@ -14,10 +14,12 @@ title:
 There are `primary` button, `default` button, `dashed` button and `danger` button in antd.
 
 ````jsx
+import { Button } from 'aokui'
+
 ReactDOM.render(
-  <div>
+  <Button>
     <div>Primary</div>
-  </div>,
+  </Button>,
   mountNode
 );
 ````
