@@ -26,6 +26,43 @@ module.exports = {
       config.devtool = 'source-map'
     }
 
+    config.module.rules.push({
+      test: /\.styl$/,
+      use: [
+        {
+          loader: 'style-loader',
+          options: {
+            sourceMap: true
+          }
+        },
+        {
+          loader: 'css-loader',
+          options: {
+            modules: true,
+            importLoaders: 1,
+            sourceMap: true
+          }
+        },
+        {
+          loader: 'postcss-loader',
+          options: {
+            sourceMap: true
+          }
+        },
+        {
+          loader: 'stylus-loader',
+          options: {
+            sourceMap: true
+          }
+        }
+      ]
+    })
+
+    config.module.rules.push({
+      test: /\.html$/,
+      use: [ 'html-loader' ]
+    })
+
     // 这个地方必须 return config
     return config
   },

@@ -6,8 +6,8 @@
   "author": "Chr15t0pher <chr1st0pher5henxy@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "start": "bisheng start --config ./site/bisheng.config.js",
-    "build": "bisheng build --config ./site/bisheng.config.js"
+    "start": "cross-env NODE_ENV=development bisheng start -c ./site/bisheng.config.js",
+    "build": "cross-env NODE_ENV=production bisheng build -c ./site/bisheng.config.js"
   },
   "devDependencies": {
     "@types/node": "^10.12.20",
@@ -16,10 +16,16 @@
     "bisheng": "^1.1.0",
     "bisheng-plugin-description": "^0.1.4",
     "bisheng-plugin-react": "^1.0.0",
+    "cross-env": "^5.2.0",
+    "css-loader": "^2.1.0",
+    "html-loader": "^0.5.5",
     "node-nightly": "^1.7.3",
+    "postcss-loader": "^3.0.0",
     "react": "^16.7.0",
     "react-dom": "^16.7.0",
     "react-router-dom": "^4.3.1",
+    "style-loader": "^0.23.1",
+    "stylus-loader": "^3.0.2",
     "ts-loader": "^5.3.3",
     "ts-node": "^8.0.2",
     "typescript": "^3.2.4",

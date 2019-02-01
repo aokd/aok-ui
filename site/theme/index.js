@@ -19,6 +19,9 @@ module.exports = {
   ],
   routes: [{
     path: '/',
-    component: './template/Archive.tsx',
+    component: './template/Archive',
+  }, {
+    path: '/components',
+    component: './template/Content',
   }],
 };
