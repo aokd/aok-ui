@@ -15,9 +15,9 @@ module.exports = {
   },
   webpackConfig(config) {
     config.resolve.alias = {
-      '@': path.join(process.cwd(), 'components'),
+      '@':   path.join(process.cwd(), 'components'),
       aokui: path.join(process.cwd(), 'components'),
-      site: path.join(process.cwd(), 'site'),
+      site:  path.join(process.cwd(), 'site'),
     }
 
     config.resolve.extensions = ['.ts', '.tsx', '.js', '.jsx']
@@ -63,7 +63,7 @@ module.exports = {
       use: [ 'html-loader' ]
     })
 
-    // 这个地方必须 return config
+    // 必须 return config
     return config
   },
   entryName: 'aokui',
