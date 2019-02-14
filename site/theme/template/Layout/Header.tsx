@@ -6,9 +6,9 @@ export interface HeaderProps {
 export default class Header extends React.Component<HeaderProps> {
   public render() {
     return (
-      <div>
-        Header
-      </div>
+      <header id='header'>
+        AokUI
+      </header>
     )
   }
 }

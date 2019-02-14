@@ -1,3 +1,5 @@
 import 'normalize.css'
 import './global.styl'
-import './common.styl'
+import './layout.styl'
+import './header.styl'
+import './home.styl'

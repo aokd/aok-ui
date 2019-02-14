@@ -12,7 +12,7 @@ module.exports = {
         return null;
       }
       return {
-        meta: markdownData.meta,
+        meta: markdownData.meta
       };
     },
   },
