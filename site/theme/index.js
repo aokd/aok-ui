@@ -1,15 +1,15 @@
 const path = require('path')
 const layoutTmp = './template/Layout/index'
 const homeTmp = './template/Home/index'
-const contentTmp = './template/Content/index'
+const contentTmp = './template/Content/MainContent'
 
 module.exports = {
   lazyLoad: false,
   pick: {
     components(markdownData) {
-      const { filename } = markdownData.meta;
+      const { filename } = markdownData.meta
       if (!/^components/.test(filename) || /[/\\]demo$/.test(path.dirname(filename))) {
-        return null;
+        return null
       }
       return {
         meta: markdownData.meta

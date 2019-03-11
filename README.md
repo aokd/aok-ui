@@ -6,3 +6,8 @@
 ```
 ### 1. What's this?
 A group of react components.
+
+### 2. Todos
+- [ ] basic components
+- [ ] high order components
+- [ ] continuous integration

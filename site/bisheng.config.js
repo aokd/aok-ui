@@ -7,7 +7,13 @@ module.exports = {
   output: './dist',
   theme: './site/theme',
   themeConfig: {
-    home: '/',
+    categoryOrder: {
+      Components: 0
+    },
+    typeOrder: {
+      基础: 0,
+      高阶: 1,
+    }
   },
   htmlTemplate: './site/theme/static/template.html',
   htmlTemplateExtraData: {
