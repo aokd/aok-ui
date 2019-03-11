@@ -4,9 +4,6 @@ import Banner from './Banner'
 import Page1 from './Page1'
 import Page2 from './Page2'
 
-export interface HomeProps {
-}
-
 function getStyle () {
   return `
     #header {
@@ -15,7 +12,7 @@ function getStyle () {
   `
 }
 
-export default class Home extends React.Component<HomeProps> {
+export default class Home extends React.Component {
   public render() {
     return (
       <React.Fragment>

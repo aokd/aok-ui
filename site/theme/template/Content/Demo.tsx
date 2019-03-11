@@ -9,6 +9,6 @@ export default class Demo extends React.Component<DemoProps, any> {
       <div>
         
       </div>
-    );
+    )
   }
 }
