@@ -1,10 +1,15 @@
 const path = require('path')
 const layoutTmp = './template/Layout/index'
 const homeTmp = './template/Home/index'
-const contentTmp = './template/Content/MainContent'
+const contentTmp = './template/Content/index'
 
 module.exports = {
-  lazyLoad: false,
+  lazyLoad(nodePath, nodeValue) {
+    if (typeof nodeValue === 'string') {
+      return true
+    }
+    return nodePath.endsWith('/demo')
+  },
   pick: {
     components(markdownData) {
       const { filename } = markdownData.meta
@@ -13,7 +18,7 @@ module.exports = {
       }
       return {
         meta: markdownData.meta
-      };
+      }
     },
   },
   plugins: [

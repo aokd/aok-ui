@@ -3,12 +3,14 @@ const isDev = process.env.NODE_ENV === 'development'
 
 module.exports = {
   port: 10315,
-  source: './components',
+  source: {
+    components: './components'
+  },
   output: './dist',
   theme: './site/theme',
   themeConfig: {
     categoryOrder: {
-      Components: 0
+      Components: 100
     },
     typeOrder: {
       基础: 0,
