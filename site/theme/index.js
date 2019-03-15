@@ -4,7 +4,7 @@ const homeTmp = './template/Home/index'
 const contentTmp = './template/Content/index'
 
 module.exports = {
-  lazyLoad(nodePath, nodeValue) {
+  lazyLoad (nodePath, nodeValue) {
     if (typeof nodeValue === 'string') {
       return true
     }
@@ -23,7 +23,8 @@ module.exports = {
   },
   plugins: [
     'bisheng-plugin-description',
-    'bisheng-plugin-react?lang=__react'
+    'bisheng-plugin-aok?injectProvider',
+    'bisheng-plugin-pre-react?lang=__react'
   ],
   routes: {
     path: '/',

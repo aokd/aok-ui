@@ -21,6 +21,9 @@ module.exports = {
   htmlTemplateExtraData: {
     isDev,
   },
+  doraConfig: {
+    verbose: true,
+  },
   webpackConfig(config) {
     config.resolve.alias = {
       '@':   path.join(process.cwd(), 'components'),

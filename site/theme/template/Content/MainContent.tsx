@@ -12,13 +12,17 @@ export interface MainContentProps {
       [key: string]: number
     }
   },
-  picked: any
+  picked: any,
+  localizedPageData: any,
+  demos: any,
+  utils: any,
 }
 
 export default class MainContent extends React.Component<MainContentProps> {
 
   render() {
     const { props } = this
+    console.info(props)
     const MenuItems = this.getMenuItems()
 
     return (
@@ -27,13 +31,27 @@ export default class MainContent extends React.Component<MainContentProps> {
           { MenuItems }
         </section>
         <section className='main-content'>
-          <ComponentDoc {...props}/>
+          <ComponentDoc {...props} doc={ props.localizedPageData} demos={ props.demos } toComponent={ this.toComponent } />
         </section>
       </React.Fragment>
     )
   }
 
-  private getMenuItems() {
+  private toComponent = (content: any) => {
+    if (!Array.isArray(content)) {
+      return null
+    }
+
+    const [tag, headingText] = content
+    if (tag.match(/h[1-4]/)) {
+      const id = headingText.trim().replace(/(\s|\.|\(|\))+/g, '-')
+      content = [tag, ['a', { href: `#${id}`, id }, headingText]]
+    }
+
+    return this.props.utils.toReactComponent([...content])
+  }
+
+  private getMenuItems () {
     const { themeConfig, picked } = this.props
     const { categoryOrder, typeOrder } = themeConfig
     const moduleData = [...picked.components]

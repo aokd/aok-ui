@@ -1,14 +1,19 @@
 import * as React from 'react'
 
-export interface DemoProps {
-}
+export default class Demo extends React.Component<any> {
 
-export default class Demo extends React.Component<DemoProps, any> {
-  public render() {
+  state = {
+    codeExpand: false,
+  }
+
+  render() {
+    const { state, props } = this
+    const { meta, src, content, toComponent, hightlightedCode, style } = props
+    console.info(props)
     return (
-      <div>
-        
-      </div>
+      <section id={ meta.id }>
+        <section>nihao</section>
+      </section>
     )
   }
 }
