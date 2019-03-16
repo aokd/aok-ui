@@ -1,21 +1,16 @@
 const path = require('path')
 const merge = require('webpack-merge')
-const baseConfig = require('../webpack.base.js')
+const cwd = require('../utils/cwd')
+const siteConfig = require('./webpack.base.js')
 const HTMLWebpackPlugin = require('html-webpack-plugin')
 
-const sitePath     = path.resolve(__dirname, '../../site/index.tsx')
-const outputPath   = path.resolve(__dirname, '../../dist')
-const templatePath = path.resolve(__dirname, '../../static/index.html')
+const outputPath   = cwd('dist')
+const templatePath = cwd('site', 'static', 'index.html')
 
-console.info(__dirname)
-module.exports = merge(baseConfig, {
+module.exports = merge(siteConfig, {
   target: 'web',
 
   mode: 'development',
-
-  entry: {
-    site: sitePath,
-  },
 
   output: {
     filename: 'js/[name].[hash].js',
@@ -24,8 +19,7 @@ module.exports = merge(baseConfig, {
 
   plugins: [
     new HTMLWebpackPlugin({
-      title: 'aok-ui',
-      template: path.resolve(__dirname, '../../static/index.html'),
+      template: templatePath,
       inject: true,
     })
   ]
