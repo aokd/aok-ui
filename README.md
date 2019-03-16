@@ -7,7 +7,12 @@
 ### 1. What's this?
 A group of react components.
 
-### 2. Todos
+### 2. tools
+- front-matter: parse yaml
+
+### 3. Todos
 - [ ] basic components
 - [ ] high order components
+- [ ] business components
 - [ ] continuous integration
+- [ ] demos
