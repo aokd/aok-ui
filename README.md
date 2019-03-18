@@ -8,7 +8,8 @@
 A group of react components.
 
 ### 2. tools
-- front-matter: parse yaml
+- front-matter: YAML is extracted from the top of a file between matching separators of '---' or '= yaml ='.
+- babel: parse text to ast.
 
 ### 3. Todos
 - [ ] basic components
