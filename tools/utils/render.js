@@ -5,8 +5,6 @@ const traverse = require('@babel/traverse').default
 const generator = require('@babel/generator').default
 const MarkdownIt = require('markdown-it')
 const hl = require('markdown-it-highlightjs')
-const md = new MarkdownIt()
-md.use(hl)
 
 function requireGenerator(varName, moduleName) {
   return types.variableDeclaration('var', [
@@ -52,6 +50,8 @@ const defaultBabelConfig = {
 
 module.exports = {
   renderDemo: function (text) {
+    const md = new MarkdownIt()
+    md.use(hl)
     const { attributes, body } = fm(text)
     attributes.description = attributes.description
       ? md.render(attributes.description)
@@ -125,5 +125,37 @@ module.exports = {
       source,
       rendered,
     }
-  }
+  },
+  renderApi: function (text) {
+    console.info(text)
+    const md = new MarkdownIt()
+      .use(hljs)
+      .use(anchor, {
+        level: [1, 3],
+        permalinkBefore: true,
+        permalink: true,
+        slugify: text => `aok-${transliteration.slugify(text)}`
+      });
+
+    /**
+      * Hyphenate a camelCase string.
+    */
+    const hyphenateRE = /\B([A-Z])/g
+    const hyphenate = str => {
+      return str.replace(hyphenateRE, '-$1').toLowerCase()
+    }
+
+    const render = text => {
+      const { attributes, body } = fm(text);
+      let { description, title } = attributes;
+    
+      description = description ? md.render(description) : '';
+      attributes.name = hyphenate(title.en);
+    
+      return {
+        meta: attributes,
+        description,
+        api: md.render(body)
+      };
+    }
 }

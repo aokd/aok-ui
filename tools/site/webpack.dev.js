@@ -1,8 +1,7 @@
-const path = require('path')
+const HTMLWebpackPlugin = require('html-webpack-plugin')
 const merge = require('webpack-merge')
 const cwd = require('../utils/cwd')
 const siteConfig = require('./webpack.base.js')
-const HTMLWebpackPlugin = require('html-webpack-plugin')
 
 const outputPath   = cwd('dist')
 const templatePath = cwd('site', 'static', 'index.html')
@@ -21,6 +20,6 @@ module.exports = merge(siteConfig, {
     new HTMLWebpackPlugin({
       template: templatePath,
       inject: true,
-    })
-  ]
+    }),
+  ],
 })
