@@ -18,7 +18,6 @@ const update = function (file) {
   })
 
   templates[name] = (data) => {
-    console.info(data)
     return template(data)
   }
 }

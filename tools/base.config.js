@@ -3,9 +3,9 @@ const cwd = require('./utils/cwd')
 const webpack = require('webpack')
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin')
 
+const componentsPath = cwd('components')
 const tslintPath     = cwd('tslint.json')
 const tsconfigPath    = cwd('tsconfig.json')
-const componentsPath = cwd('components')
 const yamlLoaderPath = cwd('tools', 'loaders', 'yaml-loader.js')
 
 module.exports = {
@@ -45,7 +45,6 @@ module.exports = {
         use: [{
           loader: 'ts-loader',
           options: {
-            happyPackMode: true,
             transpileOnly: true
           }
         }]
