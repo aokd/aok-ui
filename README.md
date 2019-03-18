@@ -15,4 +15,4 @@ A group of react components.
 - [ ] high order components
 - [ ] business components
 - [ ] continuous integration
-- [ ] demos
+- [ ] parse markdown demos
