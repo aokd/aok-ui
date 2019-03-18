@@ -1,51 +1,14 @@
 {
-  "extends": [
-    "tslint:recommended",
-    "tslint-react"
-  ],
-  "defaultSeverity": "warning",
-  "rules": {
-    "arrow-parens": false,
-    "interface-name": false,
-    "jsx-curly-spacing": [true,
-      "always"
+    "defaultSeverity": "error",
+    "extends": [
+        "tslint:recommended"
     ],
-    "jsx-no-lambda": true,
-    "jsx-no-string-ref": true,
-    "jsx-self-close": true,
-    "jsx-wrap-multiline": true,
-    "max-classes-per-file": false,
-    "max-line-length": false,
-    "member-access": false,
-    "no-console": [true,
-      "log"
-    ],
-    "no-string-literal": false,
-    "no-var-requires": false,
-    "object-literal-key-quotes": false,
-    "object-literal-shorthand": false,
-    "object-literal-sort-keys": false,
-    "ordered-imports": [true, {
-      "import-sources-order": "any",
-      "named-imports-order": "lowercase-last"
-    }],
-    "quotemark": [true,
-      "jsx-single",
-      "single"
-    ],
-    "semicolon": [true,
-      "never"
-    ],
-    "switch-default": false,
-    "trailing-comma": false,
-    "no-unused-expression": false,
-    "no-empty-interface": false,
-    "ban-types": [true,
-      ["Boolean", "Avoid using the `Boolean` type. Did you mean `boolean`?"],
-      ["Number", "Avoid using the `Number` type. Did you mean `number`?"],
-      ["Object", "Avoid using the `Object` type. Did you mean `object`?"],
-      ["String", "Avoid using the `String` type. Did you mean `string`?"],
-      ["Symbol", "Avoid using the `Symbol` type. Did you mean `symbol`?"]
-    ]
-  }
+    "jsRules": {},
+    "rules": {
+        "interface-name": [true, "never-prefix"],
+        "quotemark": [true, "single"],
+        "semicolon": [true, "never"],
+        "no-console": [true, "log", "trace"]
+    },
+    "rulesDirectory": []
 }

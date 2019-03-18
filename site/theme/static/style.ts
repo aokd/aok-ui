@@ -1,6 +1,0 @@
-import 'normalize.css'
-import './global.styl'
-import './layout.styl'
-import './header.styl'
-import './home.styl'
-import './content.styl'

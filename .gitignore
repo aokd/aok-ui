@@ -1,7 +1,7 @@
-# dependencies
+#dependencies
 node_modules
 
-# production
+#production
 dist
 
 #misc
