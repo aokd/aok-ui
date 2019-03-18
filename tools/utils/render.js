@@ -64,7 +64,6 @@ module.exports = {
     let contentProcessing = false
     let content = ''
     let arr = []
-    let components = {}
 
     for (let i = 0, l = tokens.length; i < l; i++) {
       const token = tokens[i]
@@ -72,7 +71,7 @@ module.exports = {
 
       if (type === 'fence') {
 
-        const {ast}  = babel.transformSync(token.content, defaultBabelConfig)
+        const { ast }  = babel.transformSync(token.content, defaultBabelConfig)
         let renderReturn = null;
         traverse(ast, {
           CallExpression(callPath) {
@@ -93,6 +92,7 @@ module.exports = {
         const astProgramBody = ast.program.body;
         astProgramBody.unshift(requireGenerator('ReactDOM', 'react-dom'))
         astProgramBody.unshift(requireGenerator('React', 'react'))
+
         if (renderReturn) {
           astProgramBody.push(renderReturn)
         }
@@ -106,13 +106,16 @@ module.exports = {
         source = generator(types.program([previewFunction]), {}, token.content).code
         rendered = md.renderer.render([token], md.options)
       } else if (type === 'paragraph_open') {
+
         contentProcessing = true
         arr = []
       } else if (type === 'paragraph_close') {
+
         contentProcessing = false
         content = md.renderer.render(array, md.options)
         meta.content[lang] = contents
       } else if (contentProcessing) {
+
         arr.push(token)
       }
     }
@@ -121,7 +124,6 @@ module.exports = {
       meta,
       source,
       rendered,
-      components
     }
   }
 }
