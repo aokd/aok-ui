@@ -1,0 +1,9 @@
+# components
+components/**/*
+
+# config
+.*.js
+*.config.js
+
+# bundle
+/dist/**/*

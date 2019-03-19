@@ -1,11 +1,9 @@
-const path = require('path')
-const cwd = require('./utils/cwd')
-const webpack = require('webpack')
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin')
+const cwd = require('./utils/cwd')
 
-const componentsPath = cwd('components')
 const tslintPath     = cwd('tslint.json')
 const tsconfigPath    = cwd('tsconfig.json')
+const componentsPath = cwd('components')
 const yamlLoaderPath = cwd('tools', 'loaders', 'yaml-loader.js')
 
 module.exports = {
@@ -14,7 +12,7 @@ module.exports = {
     alias: {
       'aok': componentsPath
     },
-    extensions: ['.ts', '.tsx', '.js', '.jsx'] 
+    extensions: ['.ts', '.tsx', '.js', '.jsx'],
   },
 
   module: {
@@ -25,9 +23,9 @@ module.exports = {
         use: [{
           loader: 'babel-loader',
           options: {
-            presets: ['@babel/preset-env', '@babel/preset-react']
-          }
-        }]
+            presets: ['@babel/preset-env', '@babel/preset-react'],
+          },
+        }],
       },
       {
         test: /\.css$/,

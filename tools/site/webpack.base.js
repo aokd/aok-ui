@@ -21,7 +21,7 @@ module.exports = merge(baseConfig, {
           loader: 'ware-loader',
           options: {
             raw: true,
-            middleware(source) {
+            middleware (source) {
               return template('demo')(renderDemo(source))
             },
           },
@@ -35,7 +35,7 @@ module.exports = merge(baseConfig, {
           loader: 'ware-loader',
           options: {
             raw: true,
-            middleware(source) {
+            middleware (source) {
               return template('api')(renderApi(source))
             },
           },

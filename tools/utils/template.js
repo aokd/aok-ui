@@ -3,23 +3,21 @@ const ejs = require('ejs')
 const path = require('path')
 const globby = require('globby')
 const chokidar = require('chokidar')
-const cwd= require('./cwd')
+const cwd = require('./cwd')
 const { isProd } = require('./env')
 
 const templates = {}
 
-const update = function (file) {
+const update = (file) => {
   if (!fs.lstatSync(file).isFile()) return
 
   const name = path.basename(file, '.tsx.ejs')
   const content = fs.readFileSync(file, 'utf-8')
   const template = ejs.compile(content, {
-    escape: i => i
+    escape: i => i,
   })
 
-  templates[name] = (data) => {
-    return template(data)
-  }
+  templates[name] = data => template(data)
 }
 
 const paths = globby.sync(cwd('tools', 'templates', '**/*'))
@@ -32,4 +30,4 @@ if (!isProd) {
   watcher.on('update', update)
 }
 
-module.exports = (name) => templates[name] || (t => t)
+module.exports = name => templates[name] || (t => t)

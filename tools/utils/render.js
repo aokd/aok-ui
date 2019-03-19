@@ -5,8 +5,10 @@ const traverse = require('@babel/traverse').default
 const generator = require('@babel/generator').default
 const MarkdownIt = require('markdown-it')
 const hl = require('markdown-it-highlightjs')
+const anchor = require('markdown-it-anchor')
+const transliteration = require('transliteration')
 
-function requireGenerator(varName, moduleName) {
+function requireGenerator (varName, moduleName) {
   return types.variableDeclaration('var', [
     types.variableDeclarator(
       types.identifier(varName),
@@ -14,7 +16,7 @@ function requireGenerator(varName, moduleName) {
         types.stringLiteral(moduleName),
       ]),
     ),
-  ]);
+  ])
 }
 
 const defaultBabelConfig = {
@@ -46,23 +48,24 @@ const defaultBabelConfig = {
     '@babel/plugin-proposal-class-properties',
     '@babel/plugin-proposal-object-rest-spread',
   ],
-};
+}
 
 module.exports = {
-  renderDemo: function (text) {
+  renderDemo (text) {
     const md = new MarkdownIt()
     md.use(hl)
+
     const { attributes, body } = fm(text)
     attributes.description = attributes.description
       ? md.render(attributes.description)
       : ''
     const meta = Object.assign({ content: {} }, attributes)
     const tokens = md.parse(body)
+    const lang = 'UNKOWNN'
     let source = ''
     let rendered = ''
-    let lang = 'UNKOWNN'
-    let contentProcessing = false
     let content = ''
+    let contentProcessing = false
     let arr = []
 
     for (let i = 0, l = tokens.length; i < l; i++) {
@@ -70,12 +73,11 @@ module.exports = {
       const { type } = token
 
       if (type === 'fence') {
-
-        const { ast }  = babel.transformSync(token.content, defaultBabelConfig)
-        let renderReturn = null;
+        const { ast } = babel.transformSync(token.content, defaultBabelConfig)
+        let renderReturn = null
         traverse(ast, {
-          CallExpression(callPath) {
-            const callPathNode = callPath.node;
+          CallExpression (callPath) {
+            const callPathNode = callPath.node
             if (
               callPathNode.callee
               && callPathNode.callee.object
@@ -84,19 +86,17 @@ module.exports = {
               && callPathNode.callee.property.name === 'render'
             ) {
               renderReturn = types.returnStatement(callPathNode.arguments[0])
-            
               callPath.remove()
             }
           },
         })
-        const astProgramBody = ast.program.body;
+        const astProgramBody = ast.program.body
         astProgramBody.unshift(requireGenerator('ReactDOM', 'react-dom'))
         astProgramBody.unshift(requireGenerator('React', 'react'))
 
         if (renderReturn) {
           astProgramBody.push(renderReturn)
         }
-      
         const codeBlock = types.BlockStatement(astProgramBody)
         const previewFunction = types.functionDeclaration(
           types.Identifier('aokReactPreviewer'),
@@ -106,16 +106,13 @@ module.exports = {
         source = generator(types.program([previewFunction]), {}, token.content).code
         rendered = md.renderer.render([token], md.options)
       } else if (type === 'paragraph_open') {
-
         contentProcessing = true
         arr = []
       } else if (type === 'paragraph_close') {
-
         contentProcessing = false
-        content = md.renderer.render(array, md.options)
-        meta.content[lang] = contents
+        content = md.renderer.render(arr, md.options)
+        meta.content[lang] = content
       } else if (contentProcessing) {
-
         arr.push(token)
       }
     }
@@ -126,36 +123,33 @@ module.exports = {
       rendered,
     }
   },
-  renderApi: function (text) {
-    console.info(text)
+  renderApi (text) {
     const md = new MarkdownIt()
-      .use(hljs)
+      .use(hl)
       .use(anchor, {
         level: [1, 3],
         permalinkBefore: true,
         permalink: true,
-        slugify: text => `aok-${transliteration.slugify(text)}`
-      });
+        slugify: t => `aok-${transliteration.slugify(t)}`,
+      })
 
     /**
       * Hyphenate a camelCase string.
     */
     const hyphenateRE = /\B([A-Z])/g
-    const hyphenate = str => {
-      return str.replace(hyphenateRE, '-$1').toLowerCase()
-    }
+    const hyphenate = str => str.replace(hyphenateRE, '-$1').toLowerCase()
 
-    const render = text => {
-      const { attributes, body } = fm(text);
-      let { description, title } = attributes;
-    
-      description = description ? md.render(description) : '';
-      attributes.name = hyphenate(title.en);
-    
-      return {
-        meta: attributes,
-        description,
-        api: md.render(body)
-      };
+    const { attributes, body } = fm(text)
+    const { title } = attributes
+    let { description } = attributes
+
+    description = description ? md.render(description) : ''
+    attributes.name = hyphenate(title.en)
+
+    return {
+      meta: attributes,
+      description,
+      api: md.render(body),
     }
+  },
 }

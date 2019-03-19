@@ -22,6 +22,9 @@ module.exports = {
       "allowShortCircuit": true,
       "allowTernary": true,
     }],
-    "no-vars": 
+    "space-before-function-paren": ["error", "always"],
+    "no-plusplus": ["error", {
+      "allowForLoopAfterthoughts": true,
+    }]
   },
-};
+}

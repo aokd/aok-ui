@@ -3,7 +3,7 @@ const merge = require('webpack-merge')
 const cwd = require('../utils/cwd')
 const siteConfig = require('./webpack.base.js')
 
-const outputPath   = cwd('dist')
+const outputPath = cwd('dist')
 const templatePath = cwd('site', 'static', 'index.html')
 
 module.exports = merge(siteConfig, {

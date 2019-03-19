@@ -1,6 +1,6 @@
 const yaml = require('js-yaml')
 
-module.exports = function yamlLoader(source) {
+module.exports = function yamlLoader (source) {
   this.cacheable && this.cacheable()
   try {
     const res = yaml.safeLoad(source)
