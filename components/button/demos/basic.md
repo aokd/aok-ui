@@ -10,6 +10,6 @@ import { Button } from 'aok'
 
 ReactDOM.render(
   <Button>按钮</Button>,
-  MountNode
+  mountNode
 )
 ```

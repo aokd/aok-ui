@@ -137,14 +137,16 @@ module.exports = {
       * Hyphenate a camelCase string.
     */
     const hyphenateRE = /\B([A-Z])/g
-    const hyphenate = str => str.replace(hyphenateRE, '-$1').toLowerCase()
+    const hyphenate = (str) => {
+      str.replace(hyphenateRE, '-$1').toLowerCase()
+    }
 
     const { attributes, body } = fm(text)
     const { title } = attributes
     let { description } = attributes
 
     description = description ? md.render(description) : ''
-    attributes.name = hyphenate(title.en)
+    attributes.name = hyphenate(title)
 
     return {
       meta: attributes,
