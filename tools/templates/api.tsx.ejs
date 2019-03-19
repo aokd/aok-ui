@@ -1,2 +1,11 @@
-<%= api %>
-export const source = <%= api %>
+import React from 'react'
+
+export class Docs extends React.PureComponent {
+  render () {
+    return (
+      <React.Fragment>
+        <%=api %>
+      </React.Fragment>
+    )
+  }
+}
