@@ -2,7 +2,7 @@
 order: 0
 title:
   zh-CN: 按钮类型
-description: 按钮
+  en-US: Type
 ---
 
 ```jsx

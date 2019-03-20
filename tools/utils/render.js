@@ -118,7 +118,7 @@ module.exports = {
     }
 
     return {
-      meta,
+      meta: JSON.stringify(meta),
       source,
       rendered,
     }
@@ -127,7 +127,7 @@ module.exports = {
     const md = new MarkdownIt()
       .use(hl)
       .use(anchor, {
-        level: [1, 3],
+        level: [1, 2, 3],
         permalinkBefore: true,
         permalink: true,
         slugify: t => `aok-${transliteration.slugify(t)}`,

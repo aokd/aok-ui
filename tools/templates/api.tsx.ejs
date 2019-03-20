@@ -1,10 +1,29 @@
 import React from 'react'
 
 export class Docs extends React.PureComponent {
+
+  renderDemos () {
+    const demos =  require.context('./demos', true, /\.md$/)
+      .keys()
+      .map((path) => {
+        const entirePath = `./demos/${path.substring(2)}`
+        const Sample = require(`${entirePath}`).source
+
+        return (
+          <React.Fragment key={ path }>
+            <Sample/>
+            <div dangerouslySetInnerHTML={{ __html: require(`${entirePath}`).rendered }}/>
+          </React.Fragment>
+        )
+      })
+    return demos
+  }
+
   render () {
     return (
       <React.Fragment>
-        <%=api %>
+        { this.renderDemos() }
+        <%= api %>
       </React.Fragment>
     )
   }
