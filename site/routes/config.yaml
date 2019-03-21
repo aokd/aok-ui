@@ -5,8 +5,8 @@
   title: 组件
   path: components
   groups:
-    Basic:
       -
         title: Button
+        subTitle: 按钮
         path: button
         compoenntName: Button

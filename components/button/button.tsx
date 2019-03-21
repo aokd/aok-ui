@@ -1,7 +1,7 @@
 import * as React from 'react'
 
-export default class Button extends React.Component {
-  public render() {
+export class Button extends React.Component {
+  render() {
     return (
       <div>
         button

@@ -1,4 +1,5 @@
 const HTMLWebpackPlugin = require('html-webpack-plugin')
+// const path = require('path')
 const merge = require('webpack-merge')
 const cwd = require('../utils/cwd')
 const siteConfig = require('./webpack.base.js')
@@ -11,6 +12,8 @@ module.exports = merge(siteConfig, {
 
   mode: 'development',
 
+  devtool: 'source-map',
+
   output: {
     filename: 'js/[name].[hash].js',
     path: outputPath,
@@ -22,4 +25,11 @@ module.exports = merge(siteConfig, {
       inject: true,
     }),
   ],
+
+  devServer: {
+    port: 8080,
+    hot: true,
+    historyApiFallback: true,
+    publicPath: './dist',
+  },
 })

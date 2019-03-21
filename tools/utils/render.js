@@ -137,9 +137,7 @@ module.exports = {
       * Hyphenate a camelCase string.
     */
     const hyphenateRE = /\B([A-Z])/g
-    const hyphenate = (str) => {
-      str.replace(hyphenateRE, '-$1').toLowerCase()
-    }
+    const hyphenate = str => str.replace(hyphenateRE, '-$1').toLowerCase()
 
     const { attributes, body } = fm(text)
     const { title } = attributes
