@@ -1,5 +1,4 @@
 const HTMLWebpackPlugin = require('html-webpack-plugin')
-// const path = require('path')
 const merge = require('webpack-merge')
 const cwd = require('../utils/cwd')
 const siteConfig = require('./webpack.base.js')
@@ -17,6 +16,7 @@ module.exports = merge(siteConfig, {
   output: {
     filename: 'js/[name].[hash].js',
     path: outputPath,
+    publicPath: '/',
   },
 
   plugins: [
@@ -27,9 +27,10 @@ module.exports = merge(siteConfig, {
   ],
 
   devServer: {
-    port: 8080,
     hot: true,
+    port: 8080,
+    publicPath: '/',
+    contentBase: cwd('static/'),
     historyApiFallback: true,
-    publicPath: './dist',
   },
 })

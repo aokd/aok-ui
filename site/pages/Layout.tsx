@@ -5,19 +5,19 @@ import styleNames from '../static/layout.styl'
 export interface LayoutProps {
 }
 
-// @CSSModules(styleNames)
+@CSSModules(styleNames)
 export class Layout extends React.Component<LayoutProps, any> {
   render() {
     const children = React.Children.toArray(this.props.children)
 
     return (
-      <div>
+      <div styleName='page-wrapper'>
         <header/>
-        <div>
-          <div>
+        <div styleName='main-wrapper'>
+          <div styleName='main-menu'>
             { children[0] }
           </div>
-          <div>
+          <div styleName='main-content'>
             { children[1] }
           </div>
         </div>

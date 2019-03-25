@@ -1,8 +1,9 @@
 import * as React from 'react'
 import CSSModules from 'react-css-modules'
-import { Link, Route, RouteProps } from 'react-router-dom'
+import { Route, RouteProps } from 'react-router-dom'
 import menus from '../routes'
 import styleNames from '../static/demo.styl'
+import { RouteLink } from './components/RouteLink'
 import { Layout } from './Layout'
 
 export interface ComponentDemoProps extends RouteProps {
@@ -24,24 +25,33 @@ export class ComponentDemo extends React.Component<ComponentDemoProps> {
       const { title, path, groups } = menuItem
       if (!groups || groups.length === 0) {
         return (
-          <li>
-            <Link to={{ pathname: `/${path}` }}>{ title }</Link>
-          </li>
+          <RouteLink
+            key={ path }
+            path={ `/${path}` }
+            label={ title }
+            level={ 1 }
+          />
         )
       }
       return (
-        <li>
-          { title }
-          {
-            groups.map((submenuItem: any) => {
-              const { title: comTitle, subTitle, path: comPath, componentName } = submenuItem
-              return (
-                <Link to={{ pathname: `/${path}/${comPath}`}}>
-                  {comTitle} {componentName}
-                </Link>
-              )
-            })
-          }
+        <li key={ path } styleName='menu-item'>
+          <div styleName='group-title'>{ title }</div>
+          <ul>
+            {
+              groups.map((subMenuItem: any) => {
+                const { title: comTitle, subTitle, path: comPath } = subMenuItem
+                const fullPath = `/${path}/${comPath}`
+                return (
+                  <RouteLink
+                    key={ fullPath }
+                    path={ fullPath }
+                    label={ `${comTitle}${subTitle}`}
+                    level={ 2 }
+                  />
+                )
+              })
+            }
+          </ul>
         </li>
       )
     })
@@ -51,15 +61,6 @@ export class ComponentDemo extends React.Component<ComponentDemoProps> {
   }
 
   private renderMainContainer() {
-    console.info(this.props.location)
-    return (
-      <div>
-        { this.generatorRoutes() }
-      </div>
-    )
-  }
-
-  private generatorRoutes() {
 
     return menus.map((menu: any) => {
       const { path, groups } = menu
@@ -67,8 +68,9 @@ export class ComponentDemo extends React.Component<ComponentDemoProps> {
         return groups.map((component: any) => {
           const { path: comPath } = component
           const Component = require(`../../components/${comPath}/index.zh-CN.md`).Docs
+          const ComponentPath = `/${path}/${comPath}`
           return (
-            <Route path={ `/${path}/${comPath}` } component={ Component } />
+            <Route path={ ComponentPath } component={ Component } key={ ComponentPath }/>
           )
         })
       }
