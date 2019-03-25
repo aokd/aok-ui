@@ -10,13 +10,6 @@ const highlightCssPath = cwd('node_modules', 'highlight.js/styles/color-brewer.c
 
 module.exports = {
 
-  resolve: {
-    alias: {
-      'aok': componentsPath
-    },
-    extensions: ['.ts', '.tsx', '.js', '.jsx'],
-  },
-
   module: {
     rules: [
       { 
@@ -34,11 +27,6 @@ module.exports = {
         test: /\.css$/,
         use: ['style-loader', 'css-loader', 'postcss-loader']
       }, 
-      {
-        test: /\.styl$/,
-        exclude: /node_modules/,
-        use: ['style-loader', 'css-loader', 'postcss-loader', 'stylus-loader']
-      },
       {
         test: /\.(ts|tsx)$/,
         exclude: /node_modules/,

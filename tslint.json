@@ -8,7 +8,9 @@
         "interface-name": [true, "never-prefix"],
         "quotemark": [true, "single"],
         "semicolon": [true, "never"],
-        "no-console": [true, "log", "trace"]
+        "no-console": [true, "log", "trace"],
+        "no-empty-interface": false,
+        "member-access": [true, "no-public"]
     },
     "rulesDirectory": []
 }

@@ -11,9 +11,12 @@ module.exports = merge(siteConfig, {
 
   mode: 'development',
 
+  devtool: 'source-map',
+
   output: {
     filename: 'js/[name].[hash].js',
     path: outputPath,
+    publicPath: '/',
   },
 
   plugins: [
@@ -22,4 +25,12 @@ module.exports = merge(siteConfig, {
       inject: true,
     }),
   ],
+
+  devServer: {
+    hot: true,
+    port: 8080,
+    publicPath: '/',
+    contentBase: cwd('static/'),
+    historyApiFallback: true,
+  },
 })
