@@ -10,10 +10,10 @@ export class Docs extends React.PureComponent {
         const Sample = require(`${entirePath}`).source
 
         return (
-          <React.Fragment key={ path }>
+          <section key={ path } className='demo-box'>
             <Sample/>
             <div dangerouslySetInnerHTML={{ __html: require(`${entirePath}`).rendered }}/>
-          </React.Fragment>
+          </section>
         )
       })
     return demos
@@ -22,8 +22,13 @@ export class Docs extends React.PureComponent {
   render () {
     return (
       <React.Fragment>
+        <h1 className='description'>
+          <%= description %>
+        </h1>
+        <section className='api-container'>
+          <%= api %>
+        </section>
         { this.renderDemos() }
-        <%= api %>
       </React.Fragment>
     )
   }

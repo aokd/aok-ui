@@ -56,8 +56,13 @@ export class ComponentDemo extends React.Component<ComponentDemoProps> {
       )
     })
     return (
-      <div>{ menuItems }</div>
+      <ul>{ menuItems }</ul>
     )
+  }
+
+  private renderDemo(comPath: string) {
+    const Component = require(`../../components/${comPath}/index.zh-CN.md`).Docs
+    return <Component/>
   }
 
   private renderMainContainer() {
@@ -67,10 +72,13 @@ export class ComponentDemo extends React.Component<ComponentDemoProps> {
       if (groups && groups.length > 0) {
         return groups.map((component: any) => {
           const { path: comPath } = component
-          const Component = require(`../../components/${comPath}/index.zh-CN.md`).Docs
           const ComponentPath = `/${path}/${comPath}`
           return (
-            <Route path={ ComponentPath } component={ Component } key={ ComponentPath }/>
+            <Route
+              key={ ComponentPath }
+              path={ ComponentPath }
+              children={ this.renderDemo(comPath) }
+            />
           )
         })
       }

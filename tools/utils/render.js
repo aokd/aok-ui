@@ -128,7 +128,7 @@ module.exports = {
       .use(hl)
       .use(anchor, {
         level: [1, 2, 3],
-        permalinkBefore: true,
+        permalinkBefore: false,
         permalink: true,
         slugify: t => `aok-${transliteration.slugify(t)}`,
       })
@@ -140,10 +140,9 @@ module.exports = {
     const hyphenate = str => str.replace(hyphenateRE, '-$1').toLowerCase()
 
     const { attributes, body } = fm(text)
-    const { title } = attributes
-    let { description } = attributes
+    const { title, subtitle } = attributes
+    const description = md.render(`${title} ${subtitle}`)
 
-    description = description ? md.render(description) : ''
     attributes.name = hyphenate(title)
 
     return {
