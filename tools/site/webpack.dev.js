@@ -29,8 +29,6 @@ module.exports = merge(siteConfig, {
   devServer: {
     hot: true,
     port: 8080,
-    publicPath: '/',
-    contentBase: cwd('static/'),
     historyApiFallback: true,
   },
 })

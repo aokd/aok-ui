@@ -8,12 +8,11 @@ export const RouteLink = ({ label, path, level }: { label: string, path: string,
       key={ path }
       path={ path }
       children={({match}) => {
-        const cls = classNames('menu-item', {
-          'active-menu-item': !!match,
+        const cls = classNames('nav-item', {
+          'is-active': !!match,
         })
-        const style = { paddingLeft: `${level * 40}px` }
         return (
-          <li key={ path } className={ cls } style={ style }>
+          <li key={ path } className={ cls }>
             <Link to={ path }>{ label }</Link>
           </li>
         )}

@@ -28,7 +28,7 @@ module.exports = merge(baseConfig, {
   module: {
     rules: [
       {
-        test: /\/components\/[^/]+\/demos\/[^/]+.md$/,
+        test: /\/components\/[^/]+\/demos\/[^/]+\.md$/,
         exclude: /node_modules/,
         enforce: 'pre',
         use: [{
@@ -42,7 +42,7 @@ module.exports = merge(baseConfig, {
         }],
       },
       {
-        test: /\/components\/[^/]+\/index.(zh-CN|en-US).md/,
+        test: /\/components\/[^/]+\/index\.(zh-CN|en-US)\.md/,
         exclude: /node_modules/,
         enforce: 'pre',
         use: [{

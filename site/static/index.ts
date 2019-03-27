@@ -1,5 +1,3 @@
 import 'highlight.js/styles/color-brewer.css'
 import 'normalize.css/normalize.css'
-import './mixin.styl'
-import './resetStyle.styl'
-import './variable.styl'
+import 'site/static/reset-style.styl'

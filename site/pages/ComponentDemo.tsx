@@ -2,7 +2,7 @@ import * as React from 'react'
 import CSSModules from 'react-css-modules'
 import { Route, RouteProps } from 'react-router-dom'
 import menus from '../routes'
-import styleNames from '../static/demo.styl'
+import styleNames from '../static/layout.styl'
 import { RouteLink } from './components/RouteLink'
 import { Layout } from './Layout'
 
@@ -34,7 +34,7 @@ export class ComponentDemo extends React.Component<ComponentDemoProps> {
         )
       }
       return (
-        <li key={ path } styleName='menu-item'>
+        <li key={ path } styleName='nav-item'>
           <div styleName='group-title'>{ title }</div>
           <ul>
             {
@@ -72,7 +72,7 @@ export class ComponentDemo extends React.Component<ComponentDemoProps> {
       if (groups && groups.length > 0) {
         return groups.map((component: any) => {
           const { path: comPath } = component
-          const ComponentPath = `/${path}/${comPath}`
+          const ComponentPath = `/${comPath}`
           return (
             <Route
               key={ ComponentPath }
