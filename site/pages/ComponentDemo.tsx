@@ -6,11 +6,8 @@ import styleNames from '../static/demo.styl'
 import { RouteLink } from './components/RouteLink'
 import { Layout } from './Layout'
 
-export interface ComponentDemoProps extends RouteProps {
-}
-
 @CSSModules(styleNames)
-export class ComponentDemo extends React.Component<ComponentDemoProps> {
+export class ComponentDemo extends React.PureComponent<RouteProps> {
   render() {
     return (
       <Layout>
@@ -66,7 +63,6 @@ export class ComponentDemo extends React.Component<ComponentDemoProps> {
   }
 
   private renderMainContainer() {
-
     return menus.map((menu: any) => {
       const { path, groups } = menu
       if (groups && groups.length > 0) {

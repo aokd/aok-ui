@@ -3,54 +3,100 @@
   transition all .3s ease
 
 .active-menu-item
-  background-color badge-25
+  position relative
+  background-color brand-1
 
+  &:after
+    position absolute
+    width 2px
+    height 40px
+    
 .group-title
   padding 8px 16px 8px 56px
-  color badge-50
-
-.demo-box
-  border 1px solid rgba(128, 128, 128, 0.1)
-  border-radius 2px
+  color font-5
 
 .description
   font-weight 500
   font-size 30px
 
-.api-container
-  overflow-x auto
 
-  table
-    min-width 719px
-    margin 2em 0
+.code-box
+  color font-5
+  border 1px solid gray-2
+  border-radius 4px
+  overflow hidden
+  transition all 300ms ease-out
+  cursor pointer
+
+  &:hover
+    box-shadow 0 0 8px 0 rgba(200, 233, 255, .5), 0 0 2px 0 rgba(200, 233, 255, .65)
+  
+  &-demo 
+    padding 42px 24px 50px
+    color font-5
+    border-bottom 1px solid #ebedf0
+  
+  &-meta 
+    position relative
+    width 100%
     font-size 14px
-    font-family 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace
-    line-height 1.5
-    border-width 0
+    border-radius 0 0 2 2
+    transition background-color 0.4s
 
-    tr:first-of-type
-      border-bottom 2px solid #3da8f5
+    p
+      width 100%
+      margin 0.5em 0
+      padding-right 25px
+      font-size 12px
+      word-break break-word
 
-    th,td
-      padding 14px 16px
-      border-width 1px 0
-      border-color hsv(0, 0, 91%)
+  &-title
+    position absolute
+    top -10px
+    margin-left 16px
+    padding 1px 8px
+    background #fff
+    border-radius 2px 2px 0 0
+    transition background-color 0.4s
+    font-weight 500
+    font-size 14px
 
-    th
-      border-width 0 0 2px 0
-      text-align left
+  &-description
+    padding 18px 24px 12px
+  
+  &-actions 
+    padding 12px 0
+    border-top 1px dashed gray-3
+    text-align center
+    vertical-align center
+    opacity .7
+    transition opacity .3s
 
-    td:first-child
-      width 20%
-      color #003a8c
-      font-weight 500
+    &:hover
+      opacity 0.9
+    
+    & > *
+      user-select none
 
-    td:nth-child(3)
-      width 22%
-      color #c41d7f
-      font-size 13px
-      word-break break-all
+  .hljs-wrapper
+    display none
+    overflow auto
+    border-radius 0 0 2px 2px
+    border-top 1px dashed gray-3
 
-    td:last-child
-      width 13%
-      font-size 13px
+    &-expand 
+      display block
+
+    pre
+      margin 0
+      padding 0
+      background #fff
+
+  .hljs
+    position relative
+    margin 0
+    padding 18px 24px
+    background foreground
+    border none
+
+    

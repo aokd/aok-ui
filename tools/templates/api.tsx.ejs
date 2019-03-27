@@ -1,23 +1,29 @@
-import React from 'react'
+import React, { useState } from 'react'
+
+const Demo = ({ path, sample, meta, rendered }) => {
+  const [expand, setExpand] = useState(false)
+  const Sample = sample
+
+  return (
+    <section key={ path } className='code-box'>
+      <section className='code-box-demo'>
+        <Sample/>
+      </section>
+      <section className='code-box-meta'>
+        <div className='code-box-title'>{ meta.title }</div>
+        <div className='code-box-description' dangerouslySetInnerHTML={{ __html: meta.description }}/>
+        <div className='code-box-actions'>
+          <span onClick={ () => setExpand(!expand) }>{`<>`}</span>
+        </div>
+      </section>
+      <section className={`hljs-wrapper ${expand ? `hljs-wrapper-expand`: ``}`}>
+        <div dangerouslySetInnerHTML={{ __html: rendered }}/>
+      </section>
+    </section>
+  )
+} 
 
 export class Docs extends React.PureComponent {
-
-  renderDemos () {
-    const demos =  require.context('./demos', true, /\.md$/)
-      .keys()
-      .map((path) => {
-        const entirePath = `./demos/${path.substring(2)}`
-        const Sample = require(`${entirePath}`).source
-
-        return (
-          <section key={ path } className='demo-box'>
-            <Sample/>
-            <div dangerouslySetInnerHTML={{ __html: require(`${entirePath}`).rendered }}/>
-          </section>
-        )
-      })
-    return demos
-  }
 
   render () {
     return (
@@ -31,5 +37,26 @@ export class Docs extends React.PureComponent {
         { this.renderDemos() }
       </React.Fragment>
     )
+  }
+
+  renderDemos () {
+    const demos =  require.context('./demos', true, /\.md$/)
+      .keys()
+      .map((path) => {
+        const entirePath = `./demos/${path.substring(2)}`
+        const { source: Sample, meta, rendered } = require(`${entirePath}`)
+        const Description = meta.description
+
+        return (
+          <Demo
+            key={ entirePath }
+            path={ entirePath }
+            sample={ Sample }
+            meta={ meta }
+            rendered={ rendered }
+          />
+        )
+      })
+    return demos
   }
 }
