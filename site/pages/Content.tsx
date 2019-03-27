@@ -1,14 +1,15 @@
 import * as React from 'react'
 import CSSModules from 'react-css-modules'
 import { Route, RouteProps } from 'react-router-dom'
-import menus from '../routes'
-import styleNames from '../static/demo.styl'
-import { RouteLink } from './components/RouteLink'
-import { Layout } from './Layout'
+import { RouteLink } from 'site/pages/components/RouteLink'
+import { Layout } from 'site/pages/Layout'
+import menus from 'site/routes'
+import styleNames from 'site/static/content.styl'
 
 @CSSModules(styleNames)
-export class ComponentDemo extends React.PureComponent<RouteProps> {
+export class Content extends React.PureComponent<RouteProps> {
   render() {
+    console.info(this.props)
     return (
       <Layout>
         { this.renderMainMenu() }
@@ -42,7 +43,7 @@ export class ComponentDemo extends React.PureComponent<RouteProps> {
                   <RouteLink
                     key={ fullPath }
                     path={ fullPath }
-                    label={ `${comTitle}${subTitle}`}
+                    label={ `${comTitle} ${subTitle}`}
                     level={ 2 }
                   />
                 )

@@ -1,6 +1,20 @@
 .menu-item
-  menuItem()
+  display block
+  overflow hidden
+  text-overflow ellipsis
+  list-style none
+  font-size 14px
   transition all .3s ease
+
+  a
+    display block
+    height 40px
+    line-height 40px
+    color font-4
+
+    &:hover
+      font-weight 450
+      color font-5
 
 .active-menu-item
   position relative
@@ -78,25 +92,25 @@
     & > *
       user-select none
 
-  .hljs-wrapper
-    display none
-    overflow auto
-    border-radius 0 0 2px 2px
-    border-top 1px dashed gray-3
+.hljs-wrapper
+  display none
+  overflow auto
+  border-radius 0 0 2px 2px
+  border-top 1px dashed gray-3
 
-    &-expand 
-      display block
+  &-expand 
+    display block
 
-    pre
-      margin 0
-      padding 0
-      background #fff
-
-  .hljs
-    position relative
+  pre
     margin 0
-    padding 18px 24px
-    background foreground
-    border none
+    padding 0
+    background #fff
+
+.hljs
+  position relative
+  margin 0
+  padding 18px 24px
+  background foreground
+  border none
 
     

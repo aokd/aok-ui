@@ -74,7 +74,6 @@ module.exports = merge(baseConfig, {
             options: {
               import: [
                 '~site/static/variable.styl',
-                '~site/static/mixin.styl',
               ],
             },
           },

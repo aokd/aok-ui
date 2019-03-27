@@ -1,6 +1,6 @@
 import * as React from 'react'
 import CSSModules from 'react-css-modules'
-import styleNames from '../static/layout.styl'
+import styleNames from 'site/static/layout.styl'
 
 export interface LayoutProps {
 }
