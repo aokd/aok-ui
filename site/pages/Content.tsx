@@ -1,15 +1,17 @@
 import * as React from 'react'
 import CSSModules from 'react-css-modules'
-import { Route, RouteProps } from 'react-router-dom'
+import { Redirect, RouteComponentProps } from 'react-router-dom'
 import { RouteLink } from 'site/pages/components/RouteLink'
 import { Layout } from 'site/pages/Layout'
 import menus from 'site/routes'
 import styleNames from 'site/static/content.styl'
 
+const ComponentPathReg = /^\/components\/([\w]+)$/i
+const DocsPathRef = /^\/docs$/g
+
 @CSSModules(styleNames)
-export class Content extends React.PureComponent<RouteProps> {
+export class Content extends React.PureComponent<RouteComponentProps> {
   render() {
-    console.info(this.props)
     return (
       <Layout>
         { this.renderMainMenu() }
@@ -59,27 +61,21 @@ export class Content extends React.PureComponent<RouteProps> {
   }
 
   private renderDemo(comPath: string) {
-    const Component = require(`../../components/${comPath}/index.zh-CN.md`).Docs
-    return <Component/>
+    try {
+      const Component = require(`../../components/${comPath}/index.zh-CN.md`).Docs
+      return Component && <Component/>
+    } catch (e) {
+      return <Redirect to='/index'/>
+    }
   }
 
   private renderMainContainer() {
-    return menus.map((menu: any) => {
-      const { path, groups } = menu
-      if (groups && groups.length > 0) {
-        return groups.map((component: any) => {
-          const { path: comPath } = component
-          const ComponentPath = `/${path}/${comPath}`
-          return (
-            <Route
-              key={ ComponentPath }
-              path={ ComponentPath }
-              children={ this.renderDemo(comPath) }
-            />
-          )
-        })
-      }
-      return null
-    })
+    const { url } = this.props.match
+
+    if (ComponentPathReg.exec(url)) {
+      return this.renderDemo(RegExp.$1)
+    } else if (DocsPathRef.test(url)) {
+      return <div>docs</div>
+    }
   }
 }
