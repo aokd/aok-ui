@@ -7,7 +7,7 @@ import routes from 'site/routes'
 import styleNames from 'site/static/content.styl'
 
 const ComponentPathReg = /^\/components\/([\w]+)$/i
-const DocsPathRef = /^\/docs$/g
+const DocsPathRef = /^\/docs$/i
 
 type RouteType = {
   title: string,
