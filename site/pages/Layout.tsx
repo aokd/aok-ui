@@ -2,11 +2,8 @@ import * as React from 'react'
 import CSSModules from 'react-css-modules'
 import styleNames from 'site/static/layout.styl'
 
-export interface LayoutProps {
-}
-
 @CSSModules(styleNames)
-export class Layout extends React.Component<LayoutProps, any> {
+export class Layout extends React.PureComponent {
   render() {
     const children = React.Children.toArray(this.props.children)
 

@@ -13,5 +13,6 @@ subtitle: 按钮
 | 属性 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
 | disabled | 按钮失效状态 | boolean | false |
+| disabled | 按钮失效状态 | boolean | false |
 
 ## 示例

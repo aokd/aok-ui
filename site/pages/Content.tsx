@@ -3,11 +3,17 @@ import CSSModules from 'react-css-modules'
 import { Redirect, RouteComponentProps } from 'react-router-dom'
 import { RouteLink } from 'site/pages/components/RouteLink'
 import { Layout } from 'site/pages/Layout'
-import menus from 'site/routes'
+import routes from 'site/routes'
 import styleNames from 'site/static/content.styl'
 
 const ComponentPathReg = /^\/components\/([\w]+)$/i
 const DocsPathRef = /^\/docs$/g
+
+type RouteType = {
+  title: string,
+  path: string
+  groups: Array<RouteType & { subTitle: string, componentName: string }>,
+}
 
 @CSSModules(styleNames)
 export class Content extends React.PureComponent<RouteComponentProps> {
@@ -21,8 +27,8 @@ export class Content extends React.PureComponent<RouteComponentProps> {
   }
 
   private renderMainMenu() {
-    const menuItems = menus.map((menuItem: any) => {
-      const { title, path, groups } = menuItem
+    const menuItems = (routes as RouteType[]).map((route) => {
+      const { title, path, groups } = route
       if (!groups || groups.length === 0) {
         return (
           <RouteLink
@@ -38,7 +44,7 @@ export class Content extends React.PureComponent<RouteComponentProps> {
           <div styleName='group-title'>{ title }</div>
           <ul>
             {
-              groups.map((subMenuItem: any) => {
+              groups.map((subMenuItem) => {
                 const { title: comTitle, subTitle, path: comPath } = subMenuItem
                 const fullPath = `/${path}/${comPath}`
                 return (
@@ -72,9 +78,9 @@ export class Content extends React.PureComponent<RouteComponentProps> {
   private renderMainContainer() {
     const { url } = this.props.match
 
-    if (ComponentPathReg.exec(url)) {
+    if (url.match(ComponentPathReg)) {
       return this.renderDemo(RegExp.$1)
-    } else if (DocsPathRef.test(url)) {
+    } else if (url.match(DocsPathRef)) {
       return <div>docs</div>
     }
   }

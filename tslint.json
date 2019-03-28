@@ -11,7 +11,8 @@
         "no-console": [true, "log", "trace"],
         "no-empty-interface": false,
         "member-access": [true, "no-public"],
-        "interface-over-type-literal": false
+        "interface-over-type-literal": false,
+        "no-any": true
     },
     "rulesDirectory": []
 }
