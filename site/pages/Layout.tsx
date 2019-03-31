@@ -1,5 +1,6 @@
 import * as React from 'react'
 import CSSModules from 'react-css-modules'
+import { Header } from 'site/pages/Header'
 import styleNames from 'site/static/layout.styl'
 
 @CSSModules(styleNames)
@@ -9,7 +10,7 @@ export class Layout extends React.PureComponent {
 
     return (
       <div styleName='page-wrapper'>
-        <header/>
+        <Header/>
         <div styleName='main-wrapper'>
           <div styleName='main-menu'>
             { children[0] }
