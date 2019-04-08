@@ -7,7 +7,6 @@ const sitePath         = cwd('site', 'index.tsx')
 const tslintPath       = cwd('tslint.json')
 const tsconfigPath      = cwd('tsconfig.json')
 const yamlLoaderPath   = cwd('tools', 'loaders', 'yaml-loader.js')
-const highlightCssPath = cwd('node_modules', 'highlight.js/styles/color-brewer.css')
 const componentsPath   = cwd('components')
 const siteAliasPath    = cwd('site')
 
