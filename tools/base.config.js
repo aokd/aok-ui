@@ -12,9 +12,6 @@ const componentsPath   = cwd('components')
 const siteAliasPath    = cwd('site')
 
 module.exports = {
-  stats: {
-    children: false
-  },
 
   resolve: {
     alias: {

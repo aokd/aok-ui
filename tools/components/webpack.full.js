@@ -44,6 +44,7 @@ const config = merge(baseConfig, {
 module.exports = [
   // normal
   merge(config, {
+    name: 'full',
     output: {
       filename: 'aok.js'
     },
@@ -58,9 +59,10 @@ module.exports = [
   }),
   // minify
   merge(config, {
+    name: 'single',
     output: {
       filename: 'aok.min.js'
-   },
+    },
     optimization: {
       minimizer: [
         new TerserPlugin({
