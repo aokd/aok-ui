@@ -8,7 +8,7 @@ description: 按钮有四种类型： 主按钮、次按钮、虚线按钮、危
 import { Button } from 'aok'
 
 ReactDOM.render(
-  <Button>按钮</Button>,
+  <Button>Primary</Button>,
   mountNode
 )
 ```

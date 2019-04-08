@@ -7,18 +7,8 @@ const { renderDemo, renderApi } = require('../utils/render')
 
 const templatePath = cwd('site', 'static', 'index.html')
 const sitePath = cwd('site', 'index.tsx')
-const siteAliasPath = cwd('site')
-const componentsPath = cwd('components')
 
 module.exports = merge(baseConfig, {
-
-  resolve: {
-    alias: {
-      aok: componentsPath,
-      site: siteAliasPath,
-    },
-    extensions: ['.ts', '.tsx', '.js', '.jsx'],
-  },
 
   entry: {
     site: sitePath,

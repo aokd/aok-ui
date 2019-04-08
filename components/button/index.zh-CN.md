@@ -12,7 +12,8 @@ subtitle: 按钮
 ## API
 | 属性 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
-| disabled | 按钮失效状态 | boolean | false |
+| type | 按钮类型,可选值为 `primary`、`danger` | string | - |
+| size | 按钮尺寸,可选值为`default`、`small`、`large`| string | - |
 | disabled | 按钮失效状态 | boolean | false |
 
 ## 示例

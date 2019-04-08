@@ -7,7 +7,10 @@
   "license": "MIT",
   "scripts": {
     "dev:site": "cross-env NODE_ENV=development webpack-dev-server --config ./tools/site/webpack.dev.js --open Chrome",
-    "build:site": "rm -rf dist && cross-env NODE_ENV=production webpack --config ./tools/site/webpack.prod.js",
+    "build:site": "rm -rf _site && cross-env NODE_ENV=production webpack --config ./tools/site/webpack.prod.js",
+    "build:lib": "yarn build:full && yarn build:single",
+    "build:full": "rm -rf dist && cross-env NODE_ENV=production webpack --config ./tools/components/webpack.full.js",
+    "build:single": "",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix"
   },
@@ -51,6 +54,7 @@
     "markdown-it-highlightjs": "^3.0.0",
     "mini-css-extract-plugin": "^0.5.0",
     "normalize.css": "^8.0.1",
+    "optimize-css-assets-webpack-plugin": "^5.0.1",
     "postcss-import": "^12.0.1",
     "postcss-loader": "^3.0.0",
     "postcss-url": "^8.0.0",
@@ -71,7 +75,7 @@
     "ware-loader": "^0.2.4",
     "webpack": "^4.29.6",
     "webpack-bundle-analyzer": "^3.1.0",
-    "webpack-cli": "^3.2.3",
+    "webpack-cli": "^3.3.0",
     "webpack-dev-server": "^3.2.1",
     "webpack-merge": "^4.2.1"
   }

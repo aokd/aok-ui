@@ -1,10 +1,11 @@
 const merge = require('webpack-merge')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin')
 const WebpackBundleAnalyzer = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
 const cwd = require('../utils/cwd')
 const siteConfig = require('./webpack.base.js')
 
-const outputPath = cwd('dist')
+const outputPath = cwd('_site')
 
 module.exports = merge(siteConfig, {
   target: 'web',
@@ -19,35 +20,7 @@ module.exports = merge(siteConfig, {
 
   externals: {},
 
-  module: {
-    rules: [
-      {
-        test: /\.styl$/,
-        exclude: /node_modules/,
-        use: [
-          'style-loader',
-          MiniCssExtractPlugin.loader,
-          {
-            loader: 'css-loader',
-            options: {
-              modules: true,
-              importLoaders: 1,
-              localIdentName: '[local]',
-            },
-          },
-          'postcss-loader',
-          {
-            loader: 'stylus-loader',
-            options: {
-              import: [
-                '~site/static/variable.styl',
-              ],
-            },
-          },
-        ],
-      },
-    ],
-  },
+  module: {},
 
   plugins: [
     // 这个地方使用 contenthash 避免使用 chunkhash 时 css 未发生变化，chunk发生变化而重新构建 css。
@@ -60,7 +33,7 @@ module.exports = merge(siteConfig, {
   optimization: {
     minimize: true,
     minimizer: [
-
+      new OptimizeCssAssetsPlugin()
     ],
     splitChunks: {
       cacheGroups: {

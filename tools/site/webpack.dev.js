@@ -17,34 +17,7 @@ module.exports = merge(siteConfig, {
     publicPath: '/',
   },
 
-  module: {
-    rules: [
-      {
-        test: /\.styl$/,
-        exclude: /node_modules/,
-        use: [
-          'style-loader',
-          {
-            loader: 'css-loader',
-            options: {
-              modules: true,
-              importLoaders: 1,
-              localIdentName: '[local]',
-            },
-          },
-          'postcss-loader',
-          {
-            loader: 'stylus-loader',
-            options: {
-              import: [
-                '~site/static/variable.styl',
-              ],
-            },
-          },
-        ],
-      },
-    ],
-  },
+  module: {},
 
   devServer: {
     hot: true,
