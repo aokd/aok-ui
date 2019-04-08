@@ -3,7 +3,6 @@ import * as PropTypes from 'prop-types'
 import * as React from 'react'
 import { tuple } from '../_util/type'
 import { ThemeConsumer, ThemeConsumerProps } from '../theme-context'
-import './style/index.styl'
 
 export const ButtonSizes = tuple('large', 'default', 'small')
 type ButtonSize = (typeof ButtonSizes)[number]

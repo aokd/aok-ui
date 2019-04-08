@@ -3,10 +3,8 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const cwd = require('./utils/cwd')
 const env = require('./utils/env')
 
-const sitePath         = cwd('site', 'index.tsx')
-const tslintPath       = cwd('tslint.json')
-const tsconfigPath      = cwd('tsconfig.json')
 const yamlLoaderPath   = cwd('tools', 'loaders', 'yaml-loader.js')
+const sitePath         = cwd('site', 'index.tsx')
 const componentsPath   = cwd('components')
 const siteAliasPath    = cwd('site')
 
@@ -78,11 +76,12 @@ module.exports = {
       },
     ]
   },
-  plugins: [
-    new ForkTsCheckerWebpackPlugin({
-      tsconfig: tsconfigPath,
-      tslint: tslintPath,
-      checkSyntacticErrors: true,
-    })
-  ]
+  // https://github.com/Realytics/fork-ts-checker-webpack-plugin/issues/229
+  // plugins: [
+  //   new ForkTsCheckerWebpackPlugin({
+  //     tsconfig: tsconfigPath,
+  //     tslint: tslintPath,
+  //     checkSyntacticErrors: true,
+  //   })
+  // ]
 }

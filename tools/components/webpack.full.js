@@ -9,7 +9,7 @@ const componentsPath = cwd('components', 'index.ts')
 const themePath = cwd('components', 'style', 'index.styl')
 const outputPath = cwd('dist')
 
-const config = merge(baseConfig, {
+const config = merge.smart(baseConfig, {
   mode: 'production',
 
   devtool: "#source-map",
@@ -43,7 +43,7 @@ const config = merge(baseConfig, {
 
 module.exports = [
   // normal
-  merge(config, {
+  merge.smart(config, {
     name: 'full',
     output: {
       filename: 'aok.js'
@@ -58,7 +58,7 @@ module.exports = [
     ]
   }),
   // minify
-  merge(config, {
+  merge.smart(config, {
     name: 'single',
     output: {
       filename: 'aok.min.js'
