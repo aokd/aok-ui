@@ -6,6 +6,7 @@ const cwd = require('../utils/cwd')
 const componentsPath = cwd('components')
 const outputPath = cwd('lib')
 
+const mode = 'production'
 const entry = Object.create(null)
 const paths = fs.readdirSync(componentsPath, {
   withFileTypes: true
@@ -26,8 +27,7 @@ paths.forEach((path) => {
 })
 
 module.exports = merge(baseConfig, {
-
-  mode: 'production',
+  mode,
 
   entry,
 
