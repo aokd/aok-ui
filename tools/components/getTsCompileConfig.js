@@ -1,7 +1,6 @@
 const assign = require('object-assign')
 const defaultTsCompilerOptions = require('../../tsconfig.json').compilerOptions
 
-console.info(defaultTsCompilerOptions)
 module.exports = function () {
   return assign(
     {

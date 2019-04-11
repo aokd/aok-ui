@@ -1,5 +1,6 @@
 const merge = require('webpack-merge')
 const HTMLWebpackPlugin = require('html-webpack-plugin')
+const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin')
 const baseConfig = require('../base.config.js')
 const cwd = require('../utils/cwd')
 const template = require('../utils/template')
