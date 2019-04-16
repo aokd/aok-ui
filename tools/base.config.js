@@ -23,7 +23,7 @@ module.exports = {
         test: /\.styl$/,
         exclude: /node_modules/,
         use: [
-          'style-loader',
+          env.isProd ? MiniCssExtractPlugin.loader : 'style-loader',
           {
             loader: 'css-loader',
             options: {

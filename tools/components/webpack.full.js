@@ -5,8 +5,7 @@ const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin')
 const baseConfig = require('../base.config.js')
 const cwd = require('../utils/cwd')
 
-const componentsPath = cwd('components', 'index.ts')
-const themePath = cwd('components', 'style', 'index.styl')
+const componentsPath = cwd('index.ts')
 const outputPath = cwd('dist')
 
 const config = merge.smart(baseConfig, {
@@ -14,10 +13,7 @@ const config = merge.smart(baseConfig, {
 
   devtool: "#source-map",
 
-  entry: [
-    themePath,
-    componentsPath,
-  ],
+  entry: componentsPath,
 
   output: {
     path: outputPath,
@@ -44,7 +40,7 @@ const config = merge.smart(baseConfig, {
 module.exports = [
   // normal
   merge.smart(config, {
-    name: 'full',
+    name: 'normal',
     output: {
       filename: 'aok.js'
     },
@@ -59,7 +55,7 @@ module.exports = [
   }),
   // minify
   merge.smart(config, {
-    name: 'single',
+    name: 'minify',
     output: {
       filename: 'aok.min.js'
     },

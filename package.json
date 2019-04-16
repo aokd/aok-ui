@@ -6,7 +6,7 @@
   "author": "Chr15t0pher <chr1st0pher5henxy@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "dev:site": "cross-env NODE_ENV=development webpack-dev-server --config ./tools/site/webpack.dev.js --open Chrome",
+    "dev:site": "cross-env NODE_ENV=development yarn build:full &&  webpack-dev-server --config ./tools/site/webpack.dev.js --open Chrome",
     "build": "yarn build:full && yarn build:lib",
     "build:site": "rm -rf _site && cross-env NODE_ENV=production webpack --config ./tools/site/webpack.prod.js",
     "build:full": "rm -rf dist && cross-env NODE_ENV=production webpack --config ./tools/components/webpack.full.js",

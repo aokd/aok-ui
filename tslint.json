@@ -12,7 +12,8 @@
         "no-empty-interface": false,
         "member-access": [true, "no-public"],
         "interface-over-type-literal": false,
-        "no-any": true
+        "no-any": true,
+        "no-var-requires": false
     },
     "rulesDirectory": []
 }

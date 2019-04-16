@@ -12,7 +12,6 @@ const tsconfigPath  = cwd('tsconfig.json')
 const tslintPath   = cwd('tslint.json')
 
 module.exports = merge(baseConfig, {
-
   entry: {
     site: sitePath,
   },

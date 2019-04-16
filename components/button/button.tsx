@@ -25,10 +25,9 @@ export class Button extends React.Component<ButtonProps> {
     size: PropTypes.oneOf(ButtonSizes),
     type: PropTypes.oneOf(ButtonTypes),
   }
+
   render() {
-    return (
-      <ThemeConsumer>{ this.renderButton }</ThemeConsumer>
-    )
+    return <ThemeConsumer>{ this.renderButton }</ThemeConsumer>
   }
 
   private renderButton = ({ getPrefixCls }: ThemeConsumerProps) => {
