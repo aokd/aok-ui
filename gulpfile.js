@@ -67,7 +67,7 @@ function compile (outputPath) {
 }
 
 gulp.task('compile', (done) => {
-  console.log('[Parallel] Compile to es...')
+  console.log('[Parallel] Compile single components...')
   compile('lib')
   done()
 })

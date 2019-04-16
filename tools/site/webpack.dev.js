@@ -24,5 +24,6 @@ module.exports = merge(siteConfig, {
     port: 8080,
     contentBase: cwd('static/'),
     historyApiFallback: true,
+    open: 'google chrome'
   },
 })
