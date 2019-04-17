@@ -78,8 +78,7 @@ export class Button extends React.Component<ButtonProps> {
       [`${prefixCls}-${sizeSuffix}`]: sizeSuffix,
       [`${prefixCls}-${type}`]: type,
     })
-    const anchorButtonRestProps = omit(rest, ['htmlType'])
-    console.info(anchorButtonRestProps)
+    const anchorButtonRestProps = omit(rest as NativeButtonProps & AnchorButtonProps, ['htmlType'])
 
     if (anchorButtonRestProps.href !== undefined) {
       return (
