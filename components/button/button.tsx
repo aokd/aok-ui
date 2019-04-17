@@ -55,8 +55,10 @@ export class Button extends React.Component<ButtonProps> {
     const {
       prefixCls: customPrefixCls,
       className,
+      loading,
       type,
       size,
+      children,
       ...rest
     } = this.props
     const prefixCls = getPrefixCls('btn', customPrefixCls)
@@ -87,12 +89,13 @@ export class Button extends React.Component<ButtonProps> {
           onClick={ this.handleClick }
           ref={ this.saveButtonNode }
         >
-          { this.props.children}
+          { children }
         </a>
       )
     }
 
     const { htmlType, ...otherProps } = rest as NativeButtonProps
+    console.info(otherProps)
 
     return (
       <button
@@ -102,7 +105,7 @@ export class Button extends React.Component<ButtonProps> {
         onClick={ this.handleClick }
         ref={ this.saveButtonNode }
       >
-        { this.props.children }
+        { children }
       </button>
     )
   }
