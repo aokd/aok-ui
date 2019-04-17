@@ -18,7 +18,9 @@ module.exports = merge(siteConfig, {
     publicPath: '/',
   },
 
-  externals: {},
+  externals: {
+    lodash: 'lodash'
+  },
 
   module: {},
 
@@ -37,36 +39,14 @@ module.exports = merge(siteConfig, {
     ],
     splitChunks: {
       cacheGroups: {
-        chunks: 'all',
-        vendors: {
-          name: 'vendor',
-          filename: '[name].[chunkhash].js',
+        vendor: {
+          test: /node_modules/,
+          chunks: 'all',
           enforce: true,
           reuseExistingChunk: true,
           priority: 10,
-        },
-        'reset-styles': {
-          name: 'styles',
-          test: (module) => {
-            // if (count === 0) {
-            const { resource } = module
-            if (!resource) {
-              return false
-            }
-            if (
-              resource.match(/node_modules\/highlight.js\/styles\/color-brewer\.css/)
-              || resource.match(/node_modules\/normalize.css\/normalize\.css/)
-              || resource.match(/\/site[/s]+markdown\.styl/)
-              || resource.match(/\/site[/s]+reset-style\.styl/)
-              || resource.match(/\/site[/s]+variable\.styl/)
-            ) {
-              return true
-            }
-            return false
-          },
-          chunks: 'all',
-          enforce: true,
-        },
+          automaticNameDelimiter: '-',
+        }
       },
     },
   },
