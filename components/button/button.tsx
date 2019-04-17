@@ -94,7 +94,6 @@ export class Button extends React.Component<ButtonProps> {
     }
 
     const { htmlType, ...otherProps } = rest as NativeButtonProps
-    console.info(otherProps)
 
     return (
       <button
