@@ -7,6 +7,7 @@ const template = require('../utils/template')
 const { renderDemo, renderApi } = require('../utils/render')
 
 const templatePath = cwd('site', 'static', 'index.html')
+const aokPath      = cwd('index.ts')
 const sitePath     = cwd('site', 'index.tsx')
 const tsconfigPath  = cwd('tsconfig.json')
 const tslintPath   = cwd('tslint.json')
@@ -14,6 +15,11 @@ const tslintPath   = cwd('tslint.json')
 module.exports = merge(baseConfig, {
   entry: {
     site: sitePath,
+    aok: aokPath,
+  },
+
+  externals: {
+    lodash: 'lodash'
   },
 
   module: {
