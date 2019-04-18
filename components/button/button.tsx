@@ -43,6 +43,8 @@ export class Button extends React.Component<ButtonProps> {
 
   static defaultProps = {
     loading: false,
+    size: 'small',
+    type: 'default'
   }
 
   buttonNode: HTMLElement | null = null

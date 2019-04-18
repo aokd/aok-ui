@@ -13,7 +13,8 @@
         "member-access": [true, "no-public"],
         "interface-over-type-literal": false,
         "no-any": true,
-        "no-var-requires": false
+        "no-var-requires": false,
+        "no-angle-bracket-type-assertion": false,
     },
     "rulesDirectory": []
 }

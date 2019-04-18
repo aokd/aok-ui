@@ -9,10 +9,12 @@ a group of react components.
 
 ### 2. Tools
 - front-matter: YAML is extracted from the top of a file between matching separators of '---' or '= yaml ='.
+- babel: transform sample code in md to js.
+- jest && enzyme: test && JavaScript Testing Utility for React
 
 ### 3. Todos
+- [x] parse markdown demos
 - [ ] basic components
 - [ ] high order components
 - [ ] business components
 - [ ] continuous integration
-- [ ] parse markdown demos

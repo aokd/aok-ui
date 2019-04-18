@@ -1,0 +1,11 @@
+{
+  "presets": [
+    "@babel/preset-env",
+    "@babel/preset-react"
+  ],
+  "plugins": [
+    // Transforms JSX class attributes into className and for attributes into htmlFor, allowing you to copy and paste HTML into your React components without having to manually edit these particular attributes each time. https://github.com/insin/babel-plugin-react-html-attrs
+    // Need it to transform md's compiling results
+    "react-html-attrs"
+  ]
+}
