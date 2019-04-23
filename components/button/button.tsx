@@ -16,6 +16,7 @@ export interface BaseButtonProps {
   className?: string
   loading?: boolean
   prefixCls?: string
+  disabled?: boolean
   size: ButtonSize
   type: ButtonType
 }
@@ -43,8 +44,8 @@ export class Button extends React.Component<ButtonProps> {
 
   static defaultProps = {
     loading: false,
-    size: 'small',
-    type: 'default'
+    size: 'default',
+    type: 'default',
   }
 
   buttonNode: HTMLElement | null = null
@@ -111,8 +112,8 @@ export class Button extends React.Component<ButtonProps> {
   }
 
   private handleClick: React.MouseEventHandler<HTMLButtonElement | HTMLAnchorElement> = (e) => {
-    const { loading, onClick } = this.props
-    if (!!loading) {
+    const { loading, onClick, disabled } = this.props
+    if (!!loading || disabled) {
       return
     }
     if (onClick) {

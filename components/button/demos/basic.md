@@ -8,7 +8,11 @@ description: 按钮有四种类型： 主按钮、次按钮、虚线按钮、危
 import { Button } from 'aok'
 
 ReactDOM.render(
-  <Button>Primary</Button>,
+  <React.Fragment>
+    <Button type='primary'>Primary</Button>
+    <Button type='default'>Default</Button>
+    <Button type='danger'>Danger</Button>
+  </React.Fragment>,
   mountNode
 )
 ```

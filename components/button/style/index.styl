@@ -1,9 +1,20 @@
-@import '../../style/themes/default.styl'
+@import '../../style/themes/default'
+@import '../../style/mixins/reset'
+@import './mixin'
 
 $btn-prefix-cls = "%s-btn" %$aok-prefix
 
 .{$btn-prefix-cls}
   position: relative
-  display: inline-block
-  font-weight: 400
-  font-size: $font-size
+  font-size: $font-size-default
+  reset-theme()
+  btn()
+
+  &-primary
+    btn-primary()
+
+  &-default
+    btn-default()
+
+  &-danger
+    btn-danger()
