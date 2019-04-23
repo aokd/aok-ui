@@ -1,7 +1,5 @@
 const stylus = require('stylus')
 
-const nodes = stylus.nodes
-
 module.exports = function() {
   return function(style) {
     style.define('palette', function(color, index) {
