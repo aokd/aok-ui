@@ -9,9 +9,11 @@ import { Button } from 'aok'
 
 ReactDOM.render(
   <React.Fragment>
+    <Button>Default</Button>
     <Button type='primary'>Primary</Button>
-    <Button type='default'>Default</Button>
     <Button type='danger'>Danger</Button>
+    <Button size='small'>small</Button>
+    <Button size='large'>large</Button>
   </React.Fragment>,
   mountNode
 )

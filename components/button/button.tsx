@@ -78,8 +78,8 @@ export class Button extends React.Component<ButtonProps> {
         break
     }
     const classes = classNames(prefixCls, className, {
-      [`${prefixCls}-${sizeSuffix}`]: sizeSuffix,
-      [`${prefixCls}-${type}`]: type,
+      [`${prefixCls}__${sizeSuffix}`]: sizeSuffix,
+      [`${prefixCls}__${type}`]: type,
     })
     const anchorButtonRestProps = omit(rest as NativeButtonProps & AnchorButtonProps, ['htmlType'])
 

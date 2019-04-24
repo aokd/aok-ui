@@ -36,9 +36,6 @@ module.exports = {
           {
             loader: 'stylus-loader',
             options: {
-              use: [
-                require('./loaders/palette.js')()
-              ],
               import: [
                 '~site/static/variable.styl',
               ],
