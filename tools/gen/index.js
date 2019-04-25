@@ -105,9 +105,10 @@ inquirer
           componentName: ${componentName}
    `
 
-    new genComponents(title, subtitle, scenario, clsprefix)
+    const next = new genComponents(title, subtitle, scenario, clsprefix)
       .walk(templateDir)
       .append(componentIndex, appendComponentIndexData)
-      .append(yamlPath, appendYamlData)
+    yaml && next.append(yamlPath, appendYamlData)
+    console.info(`✨✨ generate ${title} successfully !`)
   })
   
