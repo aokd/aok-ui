@@ -5,6 +5,9 @@
   "repository": "git@chr15t0pher.github.com:aokd/aok-ui.git",
   "author": "Chr15t0pher <chr1st0pher5henxy@gmail.com>",
   "license": "MIT",
+  "bin": {
+    "gen": "./tools/gen/index.js"
+  },
   "scripts": {
     "dev:site": "cross-env NODE_ENV=development webpack-dev-server --config ./tools/site/webpack.dev.js",
     "build": "yarn build:full && yarn build:lib",
@@ -13,7 +16,8 @@
     "build:lib": "rm -rf lib && gulp compile",
     "test": "yarn jest --config jest.config.js",
     "lint": "eslint .",
-    "lint:fix": "eslint . --fix"
+    "lint:fix": "eslint . --fix",
+    "gen": "node ./tools/gen/index.js"
   },
   "devDependencies": {
     "@babel/core": "^7.3.4",
@@ -59,6 +63,7 @@
     "highlight.js": "^9.15.6",
     "html-loader": "^0.5.5",
     "html-webpack-plugin": "^3.2.0",
+    "inquirer": "^6.3.1",
     "jest": "^24.7.1",
     "jest-config": "^24.7.1",
     "js-yaml": "^3.12.2",
@@ -99,6 +104,5 @@
     "webpack-cli": "^3.3.0",
     "webpack-dev-server": "^3.2.1",
     "webpack-merge": "^4.2.1"
-  },
-  "dependencies": {}
+  }
 }
