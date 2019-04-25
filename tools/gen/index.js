@@ -13,7 +13,7 @@ function genComponents (title, subtitle, scenario, clsprefix) {
 genComponents.prototype = {
   mkdir: function (dir) {
     try {
-      fs.mkdirSync(dir)
+      fs.mkdirSync(dir, { recursive: true })
       return this
     } catch (err) {
       if (err.message.includes(`file already exists`)) {
@@ -31,6 +31,32 @@ genComponents.prototype = {
   },
   copy: function (template, dist) {
     fs.copyFileSync(template, dist)
+    return this
+  },
+  append: function (path, data) {
+    fs.appendFileSync(path, data)
+    return this
+  },
+  walk: function (path) {
+    const { title, subtitle, scenario, clsprefix } = this
+    const list = fs.readdirSync(path)
+
+    list.forEach((fragment) => {
+      const subPath = path + '/' + fragment
+      const distPath = subPath.replace(/tools\/gen\/template/, `components/${title}`).replace(/\.ejs$/, '')
+      const stats = fs.statSync(subPath)
+      if (stats.isDirectory()) {
+        this.mkdir(distPath)
+        return this.walk(subPath)
+      } else if (stats.isFile()) {
+        const isEjs = subPath.includes('.ejs')
+        if (!isEjs) {
+          this.copy(subPath, distPath)
+        } else {
+          this.render(subPath, distPath)
+        }
+      }
+    })
     return this
   }
 }
@@ -51,52 +77,37 @@ inquirer
       type: 'input',
       name: 'scenario',
       message: "What's the component's usage scenario?"
-    },{
+    },
+    {
       type: 'input', 
       name: 'clsprefix',
       message: "What's the component's class prefix?"
+    },
+    {
+      type: 'confirm',
+      name: 'yaml',
+      message: "Do you need to change the route yaml config?"
     }
   ])
   .then((options) => {
-    const { title, subtitle, scenario, clsprefix } = options
-    const prefix = `components/` + title
-    const templatePrefix = `tools/gen/template`
+    const { title, subtitle, scenario, clsprefix, yaml } = options
+    const componentName = title.replace(/^[\w]{1}/, ($1) => $1.toUpperCase())
 
-    const dist = cwd(prefix)
-  
-    const componentFile         = cwd(prefix, `${title}.tsx`)
-    const componentFileEjs      = cwd(templatePrefix, `component.tsx.ejs`)
-    const componentIndex        = cwd(prefix, `index.tsx`)
-    const componentIndexEjs     = cwd(templatePrefix, `index.tsx.ejs`)
-    const componentIndexMd      = cwd(prefix, `index.zh-CN.md`)
-    const componentIndexMdEjs   = cwd(templatePrefix, `index.zh-CN.md.ejs`)
-  
-    const testsDir              = cwd(prefix, `__tests__`)
-    const testsIndex            = cwd(prefix, `__tests__`, `index.test.tsx`)
-    const testsIndexEjs         = cwd(templatePrefix, `__tests__`, `index.test.tsx.ejs`)
+    const templateDir = cwd('tools', 'gen', 'template')
+    const componentIndex = cwd('components', 'index.ts')
+    const yamlPath = cwd('site', 'routes', 'config.yaml')
+    const appendComponentIndexData = `export { default as ${componentName} } from './${title}'\n`
+    const appendYamlData = 
+   `    -
+          title: ${componentName}
+          subTitle: ${subtitle}
+          path: ${title}
+          componentName: ${componentName}
+   `
 
-    const demoDir               = cwd(prefix, `demos`)
-    const demoBasicMd           = cwd(prefix, `demos`, `basic.md`)
-    const demoBasicMdEjs        = cwd(templatePrefix, `demos`, `basic.md.ejs`)
-
-    const styleDir              = cwd(prefix, `style`)
-    const styleIndexTsx         = cwd(prefix, `style`, `index.tsx`)
-    const styleIndexTsxTemplate = cwd(templatePrefix, `style`, `index.tsx`)
-    const styleIndexStyl        = cwd(prefix, `style`, `index.styl`)
-    const styleIndexStylEjs     = cwd(templatePrefix, `style`, `index.styl.ejs`)
-
-    const genInstance = new genComponents(title, subtitle, scenario, clsprefix)
-    genInstance
-      .mkdir(dist)
-      .render(componentFileEjs, componentFile)
-      .render(componentIndexEjs, componentIndex)
-      .render(componentIndexMdEjs, componentIndexMd)
-      .mkdir(testsDir)
-      .render(testsIndexEjs, testsIndex)
-      .mkdir(demoDir)
-      .render(demoBasicMdEjs, demoBasicMd)
-      .mkdir(styleDir)
-      .copy(styleIndexTsxTemplate, styleIndexTsx)
-      .render(styleIndexStylEjs, styleIndexStyl)
+    new genComponents(title, subtitle, scenario, clsprefix)
+      .walk(templateDir)
+      .append(componentIndex, appendComponentIndexData)
+      .append(yamlPath, appendYamlData)
   })
   

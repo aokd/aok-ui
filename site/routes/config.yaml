@@ -10,3 +10,9 @@
         subTitle: 按钮
         path: button
         componentName: Button
+      -
+        title: Dropdown
+        subTitle: 下拉菜单
+        path: dropdown
+        componentName: dropdown
+   

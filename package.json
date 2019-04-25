@@ -5,9 +5,6 @@
   "repository": "git@chr15t0pher.github.com:aokd/aok-ui.git",
   "author": "Chr15t0pher <chr1st0pher5henxy@gmail.com>",
   "license": "MIT",
-  "bin": {
-    "gen": "./tools/gen/index.js"
-  },
   "scripts": {
     "dev:site": "cross-env NODE_ENV=development webpack-dev-server --config ./tools/site/webpack.dev.js",
     "build": "yarn build:full && yarn build:lib",
