@@ -75,9 +75,9 @@ inquirer
     const testsIndex            = cwd(prefix, `__tests__`, `index.test.tsx`)
     const testsIndexEjs         = cwd(templatePrefix, `__tests__`, `index.test.tsx.ejs`)
 
-    const demoDir               = cwd(prefix, `demo`)
-    const demoBasicMd           = cwd(prefix, `demo`, `basic.md`)
-    const demoBasicMdEjs        = cwd(templatePrefix, `demo`, `basic.md.ejs`)
+    const demoDir               = cwd(prefix, `demos`)
+    const demoBasicMd           = cwd(prefix, `demos`, `basic.md`)
+    const demoBasicMdEjs        = cwd(templatePrefix, `demos`, `basic.md.ejs`)
 
     const styleDir              = cwd(prefix, `style`)
     const styleIndexTsx         = cwd(prefix, `style`, `index.tsx`)
