@@ -1,6 +1,13 @@
 sudo: false
+
 language: node_js
 node_js:
   - 11
+
+before_install:
+  - yarn add codecov
 install: yarn
+
 script: yarn test -updateSnapshot
+after_success:
+  - codecov
