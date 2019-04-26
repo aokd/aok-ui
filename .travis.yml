@@ -3,4 +3,4 @@ language: node_js
 node_js:
   - 11
 install: yarn
-script: yarn test
+script: yarn test -updateSnapshot
