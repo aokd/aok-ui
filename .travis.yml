@@ -8,6 +8,6 @@ before_install:
   - yarn add codecov
 install: yarn
 
-script: yarn test -updateSnapshot
+script: yarn test --updateSnapshot
 after_success:
   - codecov
