@@ -1,11 +1,21 @@
+<p align="center">
+
 ```bash 
-   ___       __   __  ______
-  / _ |___  / /__/ / / /  _/
- / __ / _ \/  '_/ /_/ // /  
-/_/ |_\___/_/\_\\____/___/  
+                               ___       __   __  ______
+                              / _ |___  / /__/ / / /  _/
+                             / __ / _ \/  '_/ /_/ // /  
+                            /_/ |_\___/_/\_\\____/___/  
 ```
-![](https://travis-ci.org/aokd/aok-ui.svg?branch=develop)
-![](https://img.shields.io/badge/license-MIT-000000.svg)
+
+</p>
+<div align="center">
+
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Build Status](https://travis-ci.org/aokd/aok-ui.svg?branch=develop)](https://travis-ci.org/aokd/aok-ui)
+[![codecov](https://codecov.io/gh/aokd/aok-ui/branch/develop/graph/badge.svg)](https://codecov.io/gh/aokd/aok-ui)
+
+</div>
+
 ### 1. What's this?
 a group of react components.
 
