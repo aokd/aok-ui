@@ -7,10 +7,10 @@ const template = require('../utils/template')
 const { renderDemo, renderApi } = require('../utils/render')
 
 const templatePath = cwd('site', 'static', 'index.html')
-const aokPath      = cwd('index.ts')
-const sitePath     = cwd('site', 'index.tsx')
-const tsconfigPath  = cwd('tsconfig.json')
-const tslintPath   = cwd('tslint.json')
+const aokPath = cwd('index.ts')
+const sitePath = cwd('site', 'index.tsx')
+const tsconfigPath = cwd('tsconfig.json')
+const tslintPath = cwd('tslint.json')
 
 module.exports = merge(baseConfig, {
   entry: {
@@ -19,7 +19,7 @@ module.exports = merge(baseConfig, {
   },
 
   externals: {
-    lodash: 'lodash'
+    lodash: 'lodash',
   },
 
   module: {
@@ -60,11 +60,11 @@ module.exports = merge(baseConfig, {
       template: templatePath,
       inject: true,
     }),
-  
+
     new ForkTsCheckerWebpackPlugin({
       tsconfig: tsconfigPath,
       tslint: tslintPath,
       checkSyntacticErrors: true,
-    })
+    }),
   ],
 })

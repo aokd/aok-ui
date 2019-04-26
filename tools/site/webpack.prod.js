@@ -19,7 +19,7 @@ module.exports = merge(siteConfig, {
   },
 
   externals: {
-    lodash: 'lodash'
+    lodash: 'lodash',
   },
 
   module: {},
@@ -35,7 +35,7 @@ module.exports = merge(siteConfig, {
   optimization: {
     minimize: true,
     minimizer: [
-      new OptimizeCssAssetsPlugin()
+      new OptimizeCssAssetsPlugin(),
     ],
     splitChunks: {
       cacheGroups: {
@@ -46,7 +46,7 @@ module.exports = merge(siteConfig, {
           reuseExistingChunk: true,
           priority: 10,
           automaticNameDelimiter: '-',
-        }
+        },
       },
     },
   },

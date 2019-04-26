@@ -12,14 +12,13 @@ const cwd = require('./tools/utils/cwd')
 const postcssConfig = require('./postcss.config.js')
 const getTsCompileConfig = require('./tools/components/getTsCompileConfig')
 
-function transformStylus(stylusFile, config = {}) {
-  const { fullPath = process.cwd() } = config
+function transformStylus (stylusFile) {
   const resolvedStylusFile = path.resolve(cwd, stylusFile)
 
   let data = fs.readFileSync(resolvedStylusFile, 'utf-8')
   data = data.replace(/^\uFEFF/, '')
 
-  return  new Promise((resolve, reject) => {
+  return new Promise((resolve, reject) => {
     stylus(data)
       .set('filename', `${resolvedStylusFile}.css`)
       .render((err, css) => {
@@ -29,20 +28,20 @@ function transformStylus(stylusFile, config = {}) {
         resolve(css)
       })
   })
-  .then(res => postcss(postcssConfig.plugins).process(res, { from: undefined }))
-  .then(res => res.css)
+    .then(res => postcss(postcssConfig.plugins).process(res, { from: undefined }))
+    .then(res => res.css)
 }
-
+/* eslint-disable func-names */
 function compile (outputPath) {
   rimraf.sync(cwd(outputPath))
-  const stylusPipe = gulp
+  gulp
     .src('components/**/*.styl')
     .pipe(
-      through2.obj(function(chunk, encoding, next) {
+      through2.obj(function (chunk, encoding, next) {
         this.push(chunk.clone())
         if (chunk.path.match(/(\/|\\)style(\/|\\)index\.styl/)) {
           transformStylus(chunk.path)
-            .then(css => {
+            .then((css) => {
               chunk.contents = Buffer.from(css)
               chunk.path = chunk.path.replace(/.styl$/, '.css')
               this.push(chunk)
@@ -52,13 +51,13 @@ function compile (outputPath) {
         } else {
           next()
         }
-      })
+      }),
     )
     .pipe(gulp.dest(outputPath))
 
   const source = ['components/**/*.ts', 'components/**/*.tsx']
   const tsCompileConfig = getTsCompileConfig()
-  const typescriptPipe = gulp
+  gulp
     .src(source)
     .pipe(sourcemaps.init())
     .pipe(tsc(tsCompileConfig))

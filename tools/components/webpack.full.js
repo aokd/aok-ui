@@ -11,7 +11,7 @@ const outputPath = cwd('dist')
 const config = merge.smart(baseConfig, {
   mode: 'production',
 
-  devtool: "#source-map",
+  devtool: '#source-map',
 
   entry: componentsPath,
 
@@ -22,19 +22,19 @@ const config = merge.smart(baseConfig, {
   },
 
   externals: {
-    'react': {
+    react: {
       commonjs: 'react',
       commonjs2: 'react',
       amd: 'react',
-      root: 'React'
+      root: 'React',
     },
     'react-dom': {
       commonjs: 'react-dom',
       commonjs2: 'react-dom',
       amd: 'react-dom',
-      root: 'ReactDOM'
-    }
-  }
+      root: 'ReactDOM',
+    },
+  },
 })
 
 module.exports = [
@@ -42,37 +42,37 @@ module.exports = [
   merge.smart(config, {
     name: 'normal',
     output: {
-      filename: 'aok.js'
+      filename: 'aok.js',
     },
     optimization: {
-      minimize: false
+      minimize: false,
     },
     plugins: [
       new MiniCssExtractPlugin({
-        filename: 'aok.css'
-      })
-    ]
+        filename: 'aok.css',
+      }),
+    ],
   }),
   // minify
   merge.smart(config, {
     name: 'minify',
     output: {
-      filename: 'aok.min.js'
+      filename: 'aok.min.js',
     },
     optimization: {
       minimizer: [
         new TerserPlugin({
           parallel: true,
           cache: true,
-          sourceMap: true
+          sourceMap: true,
         }),
-        new OptimizeCssAssetsPlugin()
-      ]
+        new OptimizeCssAssetsPlugin(),
+      ],
     },
     plugins: [
       new MiniCssExtractPlugin({
-        filename: 'aok.min.css'
-      })
-    ]
-  })
+        filename: 'aok.min.css',
+      }),
+    ],
+  }),
 ]
