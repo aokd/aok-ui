@@ -1,20 +1,21 @@
-module.exports = function(context) {
-  var plugins = [
-    require('postcss-import')(),
-    require('postcss-url')(),
-    require('autoprefixer')({
+const postcssImport = require('postcss-import')
+const postcssUrl = require('postcss-url')
+const autoprefixer = require('autoprefixer')
+
+
+module.exports =  {
+  plugins: [
+    postcssImport(),
+    postcssUrl(),
+    autoprefixer({
       'browsers': [
-        '> 1%',
+        'last 2 versions',
         'Firefox ESR',
-        'last 4 versions',
-        'not ie < 9'
+        '> 1%',
+        'ie >= 9',
+        'iOS >= 8',
+        'Android >= 4'
       ]
     })
   ]
-
-  return {
-    from: context.from,
-    plugins: plugins,
-    to: context.to,
-  }
 }

@@ -1,0 +1,88 @@
+@import '../../style/themes/default'
+
+// Mixins
+button-size(padding, height, font-size, border-radius = 4px)
+  padding: 0 padding 
+  height: height
+  font-size: font-size
+  border-radius: border-radius
+
+button-color(color, background, border)
+  color: color
+  background-color: background
+  border-color: border
+
+button-disabled()
+  &-disabled,
+  &.disabled,
+  &[disabled]
+    &,
+    &:hover,
+    &:focus,
+    &:active,
+    &.active
+      button-color($btn-disabled-color, $btn-disabled-bg, $btn-disabled-border)
+
+button-variant-primary(color, background)
+  button-color(color, background, background)
+  text-shadow: $btn-text-shadow
+
+button-variant-other(color, background, border)
+  button-color(color, background, border)
+  &:hover,
+  &:focus,
+  &:active,
+  &.active
+    button-color($btn-primary-bg, background, $btn-primary-bg)
+
+button-variant-danger(color, background, border)
+  button-color(color, background, border)
+  &:hover,
+  &:focus,
+  &:active,
+  &.active
+    color: $btn-primary-color
+    background-color: color
+
+// Basic
+btn()
+  display: inline-block
+  font-weight: $btn-font-weight
+  text-align: center
+  border: $border-width-default $border-style-default transparent
+  cursor: pointer
+  white-space: nowrap
+  button-size($btn-padding-default, $btn-height-default, $font-size-default, $btn-border-radius-default)
+  user-select: none
+  box-shadow: $btn-shadow
+  transition: all 300ms ease
+  &,
+  &:active,
+  &:focus
+    outline: 0
+  &:not([disabled]):hover 
+    text-decoration: none
+  &:not([disabled]):active
+    outline: 0
+    box-shadow: none
+  &.disabled,
+  &[disabled]
+    cursor: not-allowed
+    > * 
+      pointer-events: none
+  &__lg
+    button-size($btn-padding-lg, $btn-height-lg, $font-size-lg)
+  &__sm
+    button-size($btn-padding-sm, $btn-height-sm, $font-size-sm)
+
+// Default
+btn-default()
+  button-variant-other($btn-default-color, $btn-default-bg, $btn-default-border)
+
+// Primary
+btn-primary()
+  button-variant-primary($btn-primary-color, $btn-primary-bg)
+
+// Danger
+btn-danger()
+  button-variant-danger($btn-danger-color, $btn-danger-bg, $btn-danger-border)

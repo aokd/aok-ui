@@ -1,0 +1,10 @@
+import { render } from 'enzyme'
+import React from 'react'
+import <%= title.replace(/^[\w]{1}/, ($1) => $1.toUpperCase()) %> from '..'
+
+describe('<%= title.replace(/^[\w]{1}/, ($1) => $1.toUpperCase()) %>', () => {
+  it('renders correctly', () => {
+    const wrapper = render(<<%= title.replace(/^[\w]{1}/, ($1) => $1.toUpperCase()) %>>Demo</<%= title.replace(/^[\w]{1}/, ($1) => $1.toUpperCase()) %>>)
+    expect(wrapper).toMatchSnapshot()
+  })
+})

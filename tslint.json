@@ -10,7 +10,13 @@
         "semicolon": [true, "never"],
         "no-console": [true, "log", "trace"],
         "no-empty-interface": false,
-        "member-access": [true, "no-public"]
+        "member-access": [true, "no-public"],
+        "interface-over-type-literal": false,
+        "no-any": true,
+        "no-var-requires": false,
+        "no-angle-bracket-type-assertion": false,
+        "no-unused-variable": true,
+        "no-unused-expression": true
     },
     "rulesDirectory": []
 }

@@ -1,15 +1,15 @@
 module.exports = {
   env: {
     browser: true,
-    es6: true,
+    es6: true
   },
   extends: 'airbnb-base',
   globals: {
     Atomics: 'readonly',
-    SharedArrayBuffer: 'readonly',
+    SharedArrayBuffer: 'readonly'
   },
   parserOptions: {
-    ecmaVersion: 2018,
+    ecmaVersion: 2018
   },
   rules: {
     "import/no-extraneous-dependencies": ["error", {
@@ -20,11 +20,13 @@ module.exports = {
     "semi": ["error", "never"],
     "no-unused-expressions": ["error", {
       "allowShortCircuit": true,
-      "allowTernary": true,
+      "allowTernary": true
     }],
+    "no-param-reassign": 0,
     "space-before-function-paren": ["error", "always"],
     "no-plusplus": ["error", {
-      "allowForLoopAfterthoughts": true,
-    }]
-  },
+      "allowForLoopAfterthoughts": true
+    }],
+    "no-console": 0
+  }
 }

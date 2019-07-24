@@ -1,18 +1,16 @@
 import * as React from 'react'
 import CSSModules from 'react-css-modules'
-import styleNames from '../static/layout.styl'
-
-export interface LayoutProps {
-}
+import { Header } from 'site/pages/Header'
+import styleNames from 'site/static/layout.styl'
 
 @CSSModules(styleNames)
-export class Layout extends React.Component<LayoutProps, any> {
+export class Layout extends React.PureComponent {
   render() {
     const children = React.Children.toArray(this.props.children)
 
     return (
       <div styleName='page-wrapper'>
-        <header/>
+        <Header/>
         <div styleName='main-wrapper'>
           <div styleName='main-menu'>
             { children[0] }

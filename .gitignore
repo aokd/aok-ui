@@ -3,6 +3,8 @@ node_modules
 
 #production
 dist
+lib
+_site
 
 #misc
 *.log

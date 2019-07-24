@@ -1,28 +1,25 @@
 const merge = require('webpack-merge')
-const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const HTMLWebpackPlugin = require('html-webpack-plugin')
+const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin')
 const baseConfig = require('../base.config.js')
 const cwd = require('../utils/cwd')
 const template = require('../utils/template')
 const { renderDemo, renderApi } = require('../utils/render')
 
-const resetStylePath = cwd('site', 'static', 'index.ts')
+const templatePath = cwd('site', 'static', 'index.html')
+const aokPath = cwd('index.ts')
 const sitePath = cwd('site', 'index.tsx')
-const siteAliasPath = cwd('site')
-const componentsPath = cwd('components')
+const tsconfigPath = cwd('tsconfig.json')
+const tslintPath = cwd('tslint.json')
 
 module.exports = merge(baseConfig, {
-
-  resolve: {
-    alias: {
-      aok: componentsPath,
-      site: siteAliasPath,
-    },
-    extensions: ['.ts', '.tsx', '.js', '.jsx'],
+  entry: {
+    site: sitePath,
+    aok: aokPath,
   },
 
-  entry: {
-    reset: resetStylePath,
-    site: sitePath,
+  externals: {
+    lodash: 'lodash',
   },
 
   module: {
@@ -55,37 +52,19 @@ module.exports = merge(baseConfig, {
           },
         }],
       },
-      {
-        test: /\.styl$/,
-        exclude: /node_modules/,
-        use: [
-          'style-loader',
-          {
-            loader: 'css-loader',
-            options: {
-              modules: true,
-              importLoaders: 1,
-              localIdentName: '[local]',
-            },
-          },
-          'postcss-loader',
-          {
-            loader: 'stylus-loader',
-            options: {
-              import: [
-                '~site/static/variable.styl',
-                '~site/static/mixin.styl',
-              ],
-            },
-          },
-        ],
-      },
     ],
   },
 
   plugins: [
-    new MiniCssExtractPlugin({
-      filename: 'css/[name][chunkhash:8].css',
+    new HTMLWebpackPlugin({
+      template: templatePath,
+      inject: true,
+    }),
+
+    new ForkTsCheckerWebpackPlugin({
+      tsconfig: tsconfigPath,
+      tslint: tslintPath,
+      checkSyntacticErrors: true,
     }),
   ],
 })

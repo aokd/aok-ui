@@ -1,12 +1,12 @@
 import * as React from 'react'
+import { RouteComponentProps } from 'react-router-dom'
 
-export interface MainProps {
-}
-
-export class Main extends React.Component<MainProps> {
+export class Main extends React.Component<RouteComponentProps> {
   render() {
     return (
-      <div>AOK</div>
+      <React.Fragment>
+        AOK
+      </React.Fragment>
     )
   }
 }

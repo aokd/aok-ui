@@ -1,0 +1,10 @@
+codecov:
+  branch: develop
+  max_report_age: off
+
+coverage:
+  status:
+    project:
+      default:
+        # Fail the status if coverage drops by >= 0.1%
+        threshold: 0.1

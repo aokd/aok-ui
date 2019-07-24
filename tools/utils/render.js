@@ -128,9 +128,33 @@ module.exports = {
       .use(hl)
       .use(anchor, {
         level: [1, 2, 3],
-        permalinkBefore: true,
+        permalinkBefore: false,
         permalink: true,
         slugify: t => `aok-${transliteration.slugify(t)}`,
+        permalinkSymbol: '#',
+        renderPermalink: (slug, opts, state, idx) => {
+          const space = () => Object.assign(new state.Token('text', '', 0), { content: ' ' })
+          const linkTokens = [
+            Object.assign(new state.Token('link_open', 'a', 1), {
+              attrs: [
+                ['class', opts.permalinkClass],
+                ['href', opts.permalinkHref(slug, state)],
+                ['aria-hidden', 'true'],
+              ],
+            }),
+            Object.assign(new state.Token('html_block', '', 0), { content: opts.permalinkSymbol }),
+            new state.Token('link_close', 'a', -1),
+          ]
+          const position = {
+            false: 'push',
+            true: 'unshift',
+          }
+
+          // `push` or `unshift` according to position option.
+          // Space is at the opposite side.
+          linkTokens[position[!opts.permalinkBefore]](space())
+          state.tokens[idx + 1].children[position[opts.permalinkBefore]](...linkTokens)
+        },
       })
 
     /**
@@ -140,10 +164,9 @@ module.exports = {
     const hyphenate = str => str.replace(hyphenateRE, '-$1').toLowerCase()
 
     const { attributes, body } = fm(text)
-    const { title } = attributes
-    let { description } = attributes
+    const { title, subtitle } = attributes
+    const description = md.render(`${title} ${subtitle}`)
 
-    description = description ? md.render(description) : ''
     attributes.name = hyphenate(title)
 
     return {

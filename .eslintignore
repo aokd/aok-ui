@@ -1,5 +1,8 @@
+# alias
+/node_modules/**/*
+
 # components
-components/**/*
+/components/**/*
 
 # config
 .*.js
@@ -7,3 +10,5 @@ components/**/*
 
 # bundle
 /dist/**/*
+/lib/**/*
+/_site/**/*
