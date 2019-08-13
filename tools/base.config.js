@@ -3,7 +3,6 @@ const cwd = require('./utils/cwd')
 const env = require('./utils/env')
 
 const yamlLoaderPath   = cwd('tools', 'loaders', 'yaml-loader.js')
-const sitePath         = cwd('site', 'index.tsx')
 const componentsPath   = cwd('components')
 const siteAliasPath    = cwd('site')
 
@@ -27,9 +26,11 @@ module.exports = {
           {
             loader: 'css-loader',
             options: {
-              modules: true,
+              modules: {
+                mode: 'local',
+                localIdentName: '[path][name]__[local]--[hash:base64:5]',
+              },
               importLoaders: 1,
-              localIdentName: '[local]',
             },
           },
           'postcss-loader',
@@ -43,7 +44,7 @@ module.exports = {
           },
         ],
       },
-      { 
+      {
         test: /\.(js|jsx|md)$/,
         exclude: /node_modules/,
         use: 'babel-loader',
@@ -51,7 +52,7 @@ module.exports = {
       {
         test: /\.css$/,
         use: ['style-loader', 'css-loader', 'postcss-loader']
-      }, 
+      },
       {
         test: /\.(ts|tsx)$/,
         exclude: /node_modules/,
