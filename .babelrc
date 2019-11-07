@@ -1,8 +1,7 @@
 {
   "presets": [
     "@babel/preset-env",
-    "@babel/preset-react",
-    "@babel/plugin-proposal-nullish-coalescing-operator"
+    "@babel/preset-react"
   ],
   "plugins": [
     // Transforms JSX class attributes into className and for attributes into htmlFor
