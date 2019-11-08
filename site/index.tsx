@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Redirect, Route, Switch } from 'react-router-d
 import { Content } from 'site/pages/Content'
 import { Main } from 'site/pages/Main'
 import 'site/static'
+import 'site/static/markdown.styl'
 
 const rootEle = document.querySelector('#root')
 
