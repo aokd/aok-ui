@@ -21,26 +21,22 @@ const Demo = ({ path, sample, meta, rendered }) => {
       </section>
     </section>
   )
-} 
+}
 
 export class Docs extends React.PureComponent {
 
   render () {
     return (
       <React.Fragment>
-        <h1 className='description'>
-          <%= description %>
-        </h1>
-        <section className='api-container'>
-          <%= api %>
-        </section>
+        <h1 className='description'><%= description %></h1>
+        <section className='api-container'><%= api %></section>
         { this.renderDemos() }
       </React.Fragment>
     )
   }
 
   renderDemos () {
-    const demos =  require.context('./demos', true, /\.md$/)
+    const demos = require.context('./demos', true, /\.md$/)
       .keys()
       .map((path) => {
         const entirePath = `./demos/${path.substring(2)}`

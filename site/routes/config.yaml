@@ -1,7 +1,7 @@
 -
   title: 快速上手
   path: docs
-- 
+-
   title: 组件
   path: components
   groups:
@@ -10,8 +10,3 @@
         subTitle: 按钮
         path: button
         componentName: Button
-      -
-        title: Dropdown
-        subTitle: 下拉菜单
-        path: dropdown
-        componentName: dropdown

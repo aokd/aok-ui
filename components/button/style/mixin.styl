@@ -2,7 +2,7 @@
 
 // Mixins
 button-size(padding, height, font-size, border-radius = 4px)
-  padding: 0 padding 
+  padding: 0 padding
   height: height
   font-size: font-size
   border-radius: border-radius
@@ -60,7 +60,7 @@ btn()
   &:active,
   &:focus
     outline: 0
-  &:not([disabled]):hover 
+  &:not([disabled]):hover
     text-decoration: none
   &:not([disabled]):active
     outline: 0
@@ -68,7 +68,7 @@ btn()
   &.disabled,
   &[disabled]
     cursor: not-allowed
-    > * 
+    > *
       pointer-events: none
   &__lg
     button-size($btn-padding-lg, $btn-height-lg, $font-size-lg)
